@@ -52,16 +52,19 @@ button{
   border-radius:50%;
   object-fit:cover;
   border:3px solid gold;
-  animation:floatUp 10s linear forwards;
+  animation:floatUp linear forwards;
 }
 
 @keyframes floatUp{
   0%{
-    transform:translateY(0) rotate(0deg);
+    transform:translateY(0);
+    opacity:0;
+  }
+  10%{
     opacity:1;
   }
   100%{
-    transform:translateY(-120vh) rotate(360deg);
+    transform:translateY(-120vh);
     opacity:0;
   }
 }
@@ -91,8 +94,9 @@ const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
 let audio;
+let photoInterval;
 
-// 👉 START BUTTON
+// START BUTTON
 yes.onclick = function(){
   document.getElementById("start").style.display="none";
   document.getElementById("final").style.display="flex";
@@ -101,48 +105,54 @@ yes.onclick = function(){
   playMusic();
 };
 
-// 👉 NO BUTTON MOVE
+// NO BUTTON MOVE
 no.onclick = function(){
   no.style.position="absolute";
   no.style.left=Math.random()*80+"%";
   no.style.top=Math.random()*80+"%";
 };
 
-// 🎵 MUSIC FIX
+// MUSIC FIX
 function playMusic(){
   audio = new Audio("kesariya.mp3");
   audio.loop = true;
   audio.volume = 0.5;
 
   audio.play().catch(()=>{
-    // fallback: user click required
     document.body.addEventListener("click", ()=>{
       audio.play();
     }, { once: true });
   });
 }
 
-// 📸 FLOATING PHOTOS
+// CREATE PHOTO (CONTROLLED POSITIONS)
 function createPhoto(){
   const img = document.createElement("img");
   img.className = "floating-photo";
 
-  const random = images[Math.floor(Math.random()*images.length)];
-  img.src = random;
+  img.src = images[Math.floor(Math.random()*images.length)];
 
-  img.style.left = Math.random()*100 + "vw";
-  img.style.animationDuration = (Math.random()*5 + 6) + "s";
+  // 👉 CLEAN POSITIONS (no chaos)
+  const lanes = [10, 25, 40, 55, 70, 85];
+  const pos = lanes[Math.floor(Math.random()*lanes.length)];
+  img.style.left = pos + "vw";
+
+  img.style.animationDuration = (Math.random()*2 + 6) + "s";
 
   document.body.appendChild(img);
 
-  setTimeout(()=>img.remove(),10000);
+  setTimeout(()=>img.remove(),8000);
 }
 
+// START FLOW
 function startPhotos(){
-  for(let i=0;i<15;i++){
+  if(photoInterval) clearInterval(photoInterval);
+
+  for(let i=0;i<12;i++){
     setTimeout(createPhoto, i*200);
   }
-  setInterval(createPhoto, 500);
+
+  photoInterval = setInterval(createPhoto, 700);
 }
 
 </script>
