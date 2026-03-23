@@ -322,39 +322,31 @@ body{
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
-/* ---------- FLOATING PHOTOS ---------- */
+/* ---------- FLOATING PHOTOS - ALL 13 MOVE FROM BOTTOM TO TOP ---------- */
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width:60px;
-  height:60px;
+  width:65px;
+  height:65px;
   border-radius:50% !important;
   object-fit:cover;
   border:2px solid #ffd700;
-  box-shadow:0 0 20px rgba(255, 215, 0, 0.5);
-  animation:floatUp 9s linear forwards;
+  box-shadow:0 0 20px rgba(255, 215, 0, 0.6);
+  animation:floatUp 8s linear forwards;
   z-index:1000;
   pointer-events:none;
+  will-change: transform;
 }
 
 @keyframes floatUp{
-  to{
-    transform:translateY(-120vh) rotate(360deg);
-    opacity:0;
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-}
-
-/* Loading indicator - optional */
-.loading-spinner {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  color: #ffd700;
-  font-size: 12px;
-  background: rgba(0,0,0,0.6);
-  padding: 5px 10px;
-  border-radius: 20px;
-  z-index: 1000;
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -373,9 +365,6 @@ body{
 </style>
 </head>
 <body>
-
-<!-- Loading indicator (optional) -->
-<div class="loading-spinner" id="loadingMsg">✨ Loading photos...</div>
 
 <!-- ========= SCREEN 1 - AI DASHBOARD ========= -->
 <div id="start">
@@ -465,51 +454,23 @@ body{
 </div>
 
 <script>
-// ALL 13 PHOTOS
+// ALL 13 PHOTOS - COMPLETE LIST
 const photoFiles = [
   "1.JPG", "2.JPG", "3.JPG", "4.jpeg", "5.jpg", "6.jpg", "7.jpg", 
   "8.JPG", "9.jpg", "10.JPG", "11.JPG", "12.jpg", "13.jpg"
 ];
 
-// Cache to store loaded images (prevents reloading)
-const imageCache = {};
-
 const startBtn = document.getElementById("start-btn");
 const laterBtn = document.getElementById("later-btn");
-const loadingMsg = document.getElementById("loadingMsg");
 let photoInterval = null;
 let audio = null;
-let photosLoaded = 0;
 
-// Function to load single image (only when needed)
-function loadImage(src, callback) {
-  if (imageCache[src]) {
-    if (callback) callback(imageCache[src]);
-    return;
-  }
-  
-  const img = new Image();
-  img.onload = function() {
-    imageCache[src] = img;
-    photosLoaded++;
-    if (photosLoaded === photoFiles.length) {
-      loadingMsg.style.opacity = "0";
-      setTimeout(() => loadingMsg.remove(), 1000);
-    }
-    if (callback) callback(img);
-  };
-  img.onerror = function() {
-    console.log("Failed to load:", src);
-    if (callback) callback(null);
-  };
-  img.src = src;
-}
-
-// START BUTTON
+// START BUTTON - BEGIN CELEBRATION
 startBtn.onclick = function(){
   document.getElementById("start").style.display = "none";
   document.getElementById("final").style.display = "flex";
   
+  // START FLOATING PHOTOS - IMMEDIATELY
   startFloatingPhotos();
   
   // Play song
@@ -534,11 +495,6 @@ startBtn.onclick = function(){
   } catch(e) {
     console.log("Audio error:", e);
   }
-  
-  // Hide loading message after start
-  setTimeout(() => {
-    if(loadingMsg) loadingMsg.style.opacity = "0";
-  }, 2000);
 };
 
 // LATER BUTTON - RUNAWAY
@@ -554,57 +510,66 @@ laterBtn.onclick = function(){
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-// CREATE FLOATING PHOTO - Loads on demand (FAST!)
+// CREATE FLOATING PHOTO - ONE PHOTO AT A TIME
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
-  photo.style.opacity = "0"; // Start invisible
   
+  // Pick random photo from ALL 13
   const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
+  photo.src = randomPhoto;
   
-  // Load image only when needed (no preloading all at once)
-  loadImage(randomPhoto, function(img) {
-    if (img) {
-      photo.src = randomPhoto;
-      photo.style.opacity = "1";
-      photo.style.transition = "opacity 0.3s";
-    } else {
-      photo.src = "https://via.placeholder.com/60?text=❤️";
-    }
-  });
+  // Error handling - if image fails to load
+  photo.onerror = function() {
+    console.log("Failed to load:", randomPhoto);
+    if(photo.parentNode) photo.remove();
+  };
   
-  // Position
+  // Random position (10% to 90% - stays inside screen)
   const leftPos = 10 + Math.random() * 80;
   photo.style.left = leftPos + "vw";
   photo.style.bottom = "-100px";
   
-  const size = Math.floor(Math.random() * 30) + 50;
+  // Random size (50px to 85px)
+  const size = Math.floor(Math.random() * 35) + 50;
   photo.style.width = size + "px";
   photo.style.height = size + "px";
-  photo.style.animationDuration = (Math.random() * 5 + 8) + "s";
   
+  // Random speed (7 to 11 seconds)
+  const speed = Math.random() * 4 + 7;
+  photo.style.animationDuration = speed + "s";
+  
+  // Add to body
   document.body.appendChild(photo);
   
+  // Remove after animation completes
   setTimeout(() => {
     if(photo && photo.parentNode) photo.remove();
-  }, 13000);
+  }, speed * 1000 + 500);
 }
 
-// START FLOATING PHOTOS - Slower for better performance
+// START FLOATING PHOTOS - ALL PHOTOS WILL MOVE
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
   
-  // Launch initial 8 photos
-  for(let i = 0; i < 8; i++) {
-    setTimeout(createFloatingPhoto, i * 250);
+  // Launch initial 12 photos immediately (one after another)
+  for(let i = 0; i < 12; i++) {
+    setTimeout(createFloatingPhoto, i * 180);
   }
   
-  // Continue every 900ms (slower = better performance)
-  photoInterval = setInterval(createFloatingPhoto, 900);
+  // Continue launching new photos every 600ms (continuous flow)
+  photoInterval = setInterval(createFloatingPhoto, 600);
 }
 
-// Preload just the first photo to show quickly
-loadImage("1.JPG");
+// Optional: Show a few floating photos before click for preview
+setTimeout(() => {
+  // Only show if user hasn't clicked yet
+  if(document.getElementById("start").style.display !== "none") {
+    for(let i = 0; i < 5; i++) {
+      setTimeout(createFloatingPhoto, i * 300);
+    }
+  }
+}, 1500);
 </script>
 
 </body>
