@@ -2,121 +2,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Jayani Bangaram 🎂</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Happy Birthday Jayani 🎂</title>
 
 <style>
 body{
   margin:0;
-  height:100vh;
   overflow:hidden;
-  font-family:'Poppins',sans-serif;
-  background: linear-gradient(145deg, #0a0504, #000000);
+  background:black;
+  font-family:Arial;
+  text-align:center;
+  color:gold;
 }
 
-/* ---------- MAIN CARD ---------- */
+/* start screen */
 #start{
   height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-}
-
-.card{
-  background: rgba(0,0,0,0.9);
-  padding:40px;
-  border-radius:25px;
-  border:2px solid gold;
-  text-align:center;
-  width:90%;
-  max-width:600px;
-  box-shadow:0 0 40px rgba(255,215,0,0.4);
-}
-
-.title{
-  font-size:38px;
-  color:gold;
-  font-family:'Playfair Display', serif;
-}
-
-.subtitle{
-  color:#e0c080;
-  font-size:20px;
-  margin-bottom:15px;
-  font-family:'Dancing Script', cursive;
-}
-
-.info{
-  text-align:left;
-  margin:20px 0;
-}
-
-.row{
-  margin:10px 0;
-  color:white;
-}
-
-.label{
-  color:gold;
-  font-weight:bold;
 }
 
 button{
   padding:15px 30px;
+  font-size:18px;
   border:none;
   border-radius:30px;
-  font-size:18px;
   cursor:pointer;
-  margin:10px;
 }
 
-#yes{
-  background:gold;
-  font-weight:bold;
-}
+#yes{background:gold;}
+#no{background:#333;color:white;}
 
-#no{
-  background:#333;
-  color:white;
-}
-
-/* ---------- FINAL ---------- */
+/* final */
 #final{
   display:none;
   height:100vh;
-  flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
 
-.photo{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  border:3px solid gold;
-  margin-bottom:20px;
-}
-
-.letter{
-  color:gold;
-  font-size:26px;
-  text-align:center;
-  line-height:1.8;
-  font-family:'Dancing Script', cursive;
-}
-
-/* hearts */
-.heart{
+/* floating images */
+.floating-photo{
   position:fixed;
-  bottom:-20px;
-  font-size:25px;
-  animation:float 5s linear forwards;
+  bottom:-100px;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid gold;
+  animation:floatUp 10s linear forwards;
 }
 
-@keyframes float{
-  to{
-    transform:translateY(-100vh);
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-120vh) rotate(360deg);
     opacity:0;
   }
 }
@@ -125,94 +70,81 @@ button{
 
 <body>
 
-<!-- SCREEN 1 -->
 <div id="start">
-  <div class="card">
-
-    <div class="title">💎 AI ELITE PROGRAM 💎</div>
-    <div class="subtitle">Future AI Engineer 👩‍💻🤖</div>
-
-    <h2 style="color:gold;">Jayani Bangaram 🎂</h2>
-
-    <div class="info">
-      <div class="row"><span class="label">COURSE:</span> B.Tech AI Engineering 🎓</div>
-      <div class="row"><span class="label">YEAR:</span> 2nd Year 🚀</div>
-      <div class="row"><span class="label">STATUS:</span> Level Up 🔥</div>
-    </div>
-
-    <div style="color:#fff3e0;">
-      🤖 AI Thinking<br>
-      💻 Coding Skills<br>
-      📊 Data Intelligence<br>
-      🧠 Smart Brain<br>
-      🚀 Future Success<br>
-      ❤️ Family Support
-    </div>
-
-    <h3 style="color:gold; margin-top:20px;">
-      Ready to celebrate your big day? 🎉
-    </h3>
-
-    <button id="yes">🎉 START 🎉</button>
-    <button id="no">WAIT 😜</button>
-
-  </div>
+  <h1>🎂 Happy Birthday Jayani Bangaram 🎂</h1>
+  <h3>Future AI Engineer 👩‍💻🤖</h3>
+  <button id="yes">START 🎉</button>
+  <button id="no">WAIT 😜</button>
 </div>
 
-<!-- FINAL -->
 <div id="final">
-
-  <img src="Bangaram.jpg" class="photo">
-
-  <div class="letter">
-    Dear Jayani Bangaram 💖<br><br>
-
-    Happy Birthday 🎂🎉<br><br>
-
-    Our future AI Engineer 👩‍💻🤖<br>
-    You are doing amazing 🎓<br><br>
-
-    Keep learning and growing 🚀<br>
-    Believe in yourself always 💪<br><br>
-
-    Big dreams are waiting for you 🌟<br>
-    We are very proud of you ❤️<br><br>
-
-    Enjoy your special day 🎁<br><br>
-
-    – Your Mama 💖
-  </div>
-
+  <h2>Enjoy your special day 🎁</h2>
 </div>
 
 <script>
+
+const images = [
+  "1.JPG","2.JPG","3.JPG","4.jpeg","5.jpg","6.jpg","7.jpg","9.jpg"
+];
+
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 
+let audio;
+
+// 👉 START BUTTON
 yes.onclick = function(){
   document.getElementById("start").style.display="none";
   document.getElementById("final").style.display="flex";
-  startHearts();
+
+  startPhotos();
+  playMusic();
 };
 
+// 👉 NO BUTTON MOVE
 no.onclick = function(){
   no.style.position="absolute";
-  no.style.top=Math.random()*80+"%";
   no.style.left=Math.random()*80+"%";
+  no.style.top=Math.random()*80+"%";
 };
 
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
+// 🎵 MUSIC FIX
+function playMusic(){
+  audio = new Audio("kesariya.mp3");
+  audio.loop = true;
+  audio.volume = 0.5;
+
+  audio.play().catch(()=>{
+    // fallback: user click required
+    document.body.addEventListener("click", ()=>{
+      audio.play();
+    }, { once: true });
+  });
 }
 
-function startHearts(){
-  setInterval(createHeart,200);
+// 📸 FLOATING PHOTOS
+function createPhoto(){
+  const img = document.createElement("img");
+  img.className = "floating-photo";
+
+  const random = images[Math.floor(Math.random()*images.length)];
+  img.src = random;
+
+  img.style.left = Math.random()*100 + "vw";
+  img.style.animationDuration = (Math.random()*5 + 6) + "s";
+
+  document.body.appendChild(img);
+
+  setTimeout(()=>img.remove(),10000);
 }
+
+function startPhotos(){
+  for(let i=0;i<15;i++){
+    setTimeout(createPhoto, i*200);
+  }
+  setInterval(createPhoto, 500);
+}
+
 </script>
 
 </body>
