@@ -306,20 +306,24 @@ body{
 
 .letter{
   color: #ffd700;
-  font-size: 24px;
+  font-size: 26px;
   text-align:center;
-  line-height:1.6;
+  line-height: 2;
   font-family:'Dancing Script', cursive;
-  background:rgba(0,0,0,0.8);
-  padding:20px 30px;
-  border-radius:20px;
+  background:rgba(0,0,0,0.85);
+  padding:30px 40px;
+  border-radius:25px;
   border:1px solid #ffd700;
-  max-width:500px;
+  max-width:550px;
   width:90%;
   margin:0 auto;
   position:relative;
   z-index:20;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
+}
+
+.letter div {
+  margin: 12px 0;
 }
 
 /* ---------- FLOATING PHOTOS - LARGER CIRCLE SIZE ---------- */
@@ -359,7 +363,7 @@ body{
   .metric-label{font-size:11px;}
   .mission-text{font-size:13px;}
   .dashboard-btn{padding:10px 25px;font-size:15px;}
-  .letter{font-size:20px;padding:18px 25px;}
+  .letter{font-size:22px;padding:20px 25px; line-height: 1.8;}
   .main-photo{width:130px;height:130px;}
   .floating-photo{width:70px;height:70px;}
 }
@@ -435,22 +439,22 @@ body{
   </div>
 </div>
 
-<!-- ========= FINAL SCREEN ========= -->
+<!-- ========= FINAL SCREEN - NO LOVE SYMBOLS, JUST STARS & TECH EMOJIS ========= -->
 <div id="final">
   <div class="main-photo-container">
-    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/160?text=Jayani❤️'">
+    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/160?text=Jayani⭐'">
   </div>
   <div class="letter">
-    Dear Jayani Bangaram 💖<br><br>
-    Happy Birthday 🎂🎉<br><br>
-    Our future AI Engineer 👩‍💻🤖<br>
-    You are doing amazing 🎓<br><br>
-    Keep learning and growing 🚀<br>
-    Believe in yourself always 💪<br><br>
-    Big dreams are waiting for you 🌟<br>
-    We are very proud of you ❤️<br><br>
-    Enjoy your special day 🎁<br><br>
-    – Your Mama 💖
+    <div>⭐ Dear Jayani Bangaram ⭐</div>
+    <div>🎂 Happy Birthday 🎈</div>
+    <div>🤖 Our future AI Engineer 🚀</div>
+    <div>💪 You are doing amazing ✨</div>
+    <div>📚 Keep learning and growing 🌱</div>
+    <div>🌟 Believe in yourself always 🌟</div>
+    <div>🚀 Big dreams are waiting for you 💫</div>
+    <div>🏆 We are very proud of you ⭐</div>
+    <div>🎉 Enjoy your special day 🎁</div>
+    <div>✨ – Your Mama ✨</div>
   </div>
 </div>
 
@@ -480,7 +484,6 @@ function playSong() {
     // Play immediately
     audio.play().catch(error => {
       console.log("Auto-play prevented, will play on click");
-      // If auto-play fails, try again on any click
       document.body.onclick = function() {
         audio.play();
         document.body.onclick = null;
@@ -505,7 +508,7 @@ startBtn.onclick = function(){
 
 // LATER BUTTON - RUNAWAY
 let msgIndex = 0;
-const messages = ["Nice try 😜", "Click START 🎉", "Celebrate! 🎂", "Don't wait! 🎈", "Press START ❤️"];
+const messages = ["Nice try 😜", "Click START 🎉", "Celebrate! 🎂", "Don't wait! 🎈", "Press START ⭐"];
 
 laterBtn.onclick = function(){
   laterBtn.style.position = "fixed";
@@ -517,8 +520,6 @@ laterBtn.onclick = function(){
 };
 
 // CREATE FLOATING PHOTO - LARGER SIZE
-let photoCounter = 0;
-
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
@@ -552,7 +553,6 @@ function createFloatingPhoto() {
   
   // Add to body
   document.body.appendChild(photo);
-  photoCounter++;
   
   // Remove after animation
   setTimeout(() => {
@@ -571,9 +571,6 @@ function startFloatingPhotos() {
   
   // Continue launching new photos every 500ms for continuous flow
   photoInterval = setInterval(createFloatingPhoto, 500);
-  
-  // Show all 13 photos within first few seconds
-  console.log("Started floating photos - all 13 images will appear");
 }
 
 // Preload images to ensure they appear
