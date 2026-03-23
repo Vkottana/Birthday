@@ -60,14 +60,8 @@ body{
   font-size: 28px;
   font-weight: bold;
   color: #ffd700;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-family: 'Playfair Display', serif;
-}
-
-.ai-version {
-  color: #e0c080;
-  font-size: 12px;
-  margin-top: 5px;
 }
 
 .stats-grid {
@@ -607,8 +601,7 @@ body{
   <div class="dashboard-card">
     
     <div class="ai-header">
-      <div class="ai-title">🤖 JAYANI AI 🤖</div>
-      <div class="ai-version">Version: Birthday_2.0 🎂</div>
+      <div class="ai-title">🤖 Jayani Bangaram AI 🤖</div>
     </div>
     
     <div class="stats-grid">
@@ -732,8 +725,9 @@ function loadWishes() {
         time: child.val().timestamp
       });
     });
-    wishes.reverse();
+    wishes.reverse(); // Newest on top
     
+    // Update First Page Wishes
     const wishesList = document.getElementById('wishesList');
     if (wishes.length === 0) {
       wishesList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px;">✨ Be the first to wish! ✨</div>';
@@ -744,8 +738,12 @@ function loadWishes() {
           <div class="wish-text">💝 ${escapeHtml(w.message)}</div>
         </div>
       `).join('');
+      
+      // Scroll to bottom to show latest wish
+      wishesList.scrollTop = wishesList.scrollHeight;
     }
     
+    // Update Final Screen Wishes
     const finalContainer = document.getElementById('finalWishesContainer');
     if (finalContainer) {
       if (wishes.length === 0) {
@@ -761,7 +759,9 @@ function loadWishes() {
             <div class="wish-time">📅 ${new Date(w.time).toLocaleString()}</div>
           </div>
         `).join('');
-        finalContainer.scrollTop = 0;
+        
+        // Scroll to bottom to show latest wish
+        finalContainer.scrollTop = finalContainer.scrollHeight;
       }
     }
   });
