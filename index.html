@@ -25,179 +25,26 @@ body{
   overflow-x: hidden;
 }
 
-/* ========= LEFT SIDEBAR - WISHES WALL ========= */
-.wishes-sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 320px;
-  height: 100vh;
-  background: rgba(26, 10, 26, 0.92);
-  backdrop-filter: blur(10px);
-  border-right: 2px solid #ffd700;
-  box-shadow: 5px 0 30px rgba(0,0,0,0.5);
-  z-index: 1000;
-  overflow-y: auto;
-  padding: 20px 15px;
-  transition: all 0.3s;
-}
-
-/* Custom scrollbar */
-.wishes-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-.wishes-sidebar::-webkit-scrollbar-track {
-  background: #1a0f1a;
-}
-.wishes-sidebar::-webkit-scrollbar-thumb {
-  background: #ffd700;
-  border-radius: 10px;
-}
-
-.sidebar-title {
-  text-align: center;
-  font-size: 20px;
-  color: #ffd700;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #ffd700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.sidebar-title span {
-  font-size: 24px;
-}
-
-/* Wish Items - Clean, flowing from top to bottom */
-.wish-wall-item {
-  background: rgba(255, 215, 0, 0.05);
-  border-left: 3px solid #ffd700;
-  border-radius: 12px;
-  padding: 12px 15px;
-  margin-bottom: 12px;
-  transition: all 0.3s;
-  animation: fadeInUp 0.4s ease;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.wish-wall-item:hover {
-  background: rgba(255, 215, 0, 0.12);
-  transform: translateX(5px);
-}
-
-.wish-wall-name {
-  color: #ffd700;
-  font-weight: bold;
-  font-size: 14px;
-  display: inline-block;
-  background: rgba(0,0,0,0.5);
-  padding: 3px 12px;
-  border-radius: 20px;
-  margin-bottom: 8px;
-}
-
-.wish-wall-text {
-  color: #ffefc0;
-  font-size: 13px;
-  line-height: 1.5;
-  word-break: break-word;
-  margin-top: 5px;
-}
-
-.wish-wall-time {
-  color: #888;
-  font-size: 10px;
-  margin-top: 8px;
-  text-align: right;
-}
-
-/* Add Wish Form inside Sidebar */
-.add-wish-section {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.add-wish-title {
-  color: #ffd700;
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.sidebar-input {
-  width: 100%;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid #ffd700;
-  border-radius: 25px;
-  padding: 10px 15px;
-  color: white;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.sidebar-input::placeholder {
-  color: #888;
-}
-
-.sidebar-input:focus {
-  outline: none;
-  border-color: #ffea80;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-.sidebar-send-btn {
-  width: 100%;
-  background: linear-gradient(135deg, #8b0000, #5e0000);
-  color: #ffd700;
-  border: 1px solid #ffd700;
-  border-radius: 30px;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.sidebar-send-btn:hover {
-  transform: scale(1.02);
-  background: linear-gradient(135deg, #a00000, #6b0000);
-}
-
-/* ========= MAIN CONTENT (Shifted Right) ========= */
-.main-content {
-  margin-left: 320px;
+/* ---------- MAIN CARD ---------- */
+#start{
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  z-index:100;
   padding: 20px;
 }
 
-/* ---------- MAIN CARD ---------- */
 .dashboard-card{
   background: rgba(26, 10, 26, 0.95);
-  padding: 30px;
+  padding: 25px;
   border-radius: 25px;
   border: 2px solid #ffd700;
   box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
   text-align: center;
   width: 100%;
-  max-width: 550px;
+  max-width: 700px;
   backdrop-filter: blur(8px);
   animation: glowPulse 2s ease-in-out infinite;
 }
@@ -270,31 +117,75 @@ body{
 .metric-bar { width: 100%; height: 6px; background: #2a1a2a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffea80); width: 100%; }
 
-.mission-box {
+/* Guestbook Section - Inside First Page */
+.guestbook-section {
   background: rgba(255, 215, 0, 0.08);
   border: 1px solid #ffd700;
-  border-radius: 15px;
+  border-radius: 20px;
   padding: 15px;
   margin: 15px 0;
 }
 
-.mission-title {
+.guestbook-title {
   color: #ffd700;
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.mission-text {
-  color: #ffefc0;
+.wishes-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+.wish-item {
+  background: rgba(0,0,0,0.5);
+  border-left: 3px solid #ffd700;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.wish-name { color: #ffd700; font-weight: bold; font-size: 13px; }
+.wish-text { color: #ffefc0; font-size: 12px; margin-top: 3px; }
+
+.wish-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wish-input {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #ffd700;
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 13px;
+}
+
+.send-btn {
+  background: linear-gradient(135deg, #8b0000, #5e0000);
+  color: #ffd700;
+  border: 1px solid #ffd700;
+  border-radius: 40px;
+  padding: 10px;
   font-size: 14px;
-  font-style: italic;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .btn-row {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .dashboard-btn {
@@ -304,7 +195,6 @@ body{
   border: none;
   border-radius: 40px;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 #start-btn {
@@ -320,25 +210,30 @@ body{
   100% { transform: scale(1); }
 }
 
-#start-btn:hover { transform: scale(1.08); }
-
 #later-btn {
   background: #2a1a2a;
   color: #e0c080;
   border: 1px solid #ffd700;
 }
 
-#later-btn:hover { background: #3a2a3a; transform: scale(1.02); }
-
 /* ---------- FINAL SCREEN ---------- */
 #final{
   display:none;
   min-height: 100vh;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding: 20px;
-  margin-left: 320px;
+  position: relative;
+  padding: 30px;
+}
+
+/* Main Center Content */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 20;
+  width: 90%;
+  max-width: 550px;
 }
 
 .main-photo{
@@ -367,8 +262,111 @@ body{
   padding: 25px;
   border-radius:25px;
   border:1px solid #ffd700;
-  max-width: 550px;
-  width: 90%;
+}
+
+/* ========= WISHES ON RIGHT SIDE - TOP TO BOTTOM ========= */
+.wishes-right-side {
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  bottom: 30px;
+  width: 320px;
+  background: rgba(26, 10, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wishes-header {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ffd700;
+  background: rgba(0,0,0,0.5);
+}
+
+.wishes-header h3 {
+  color: #ffd700;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.wishes-header p {
+  color: #e0c080;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.wishes-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual Wish - Flows from top to bottom */
+.wish-right-item {
+  background: linear-gradient(135deg, rgba(26, 10, 26, 0.9), rgba(42, 26, 42, 0.9));
+  border-left: 3px solid #ffd700;
+  border-radius: 12px;
+  padding: 12px 15px;
+  animation: slideInRight 0.4s ease;
+  transition: all 0.2s;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wish-right-item:hover {
+  background: linear-gradient(135deg, rgba(42, 26, 42, 0.9), rgba(60, 40, 60, 0.9));
+  transform: translateX(-3px);
+}
+
+.wish-right-name {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 13px;
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.wish-right-text {
+  color: #ffefc0;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.wish-right-time {
+  color: #888;
+  font-size: 9px;
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* Empty state */
+.empty-wishes {
+  text-align: center;
+  color: #888;
+  padding: 40px 20px;
+  font-size: 13px;
 }
 
 /* Floating Photos */
@@ -393,73 +391,48 @@ body{
   }
 }
 
+/* Responsive */
 @media (max-width: 900px) {
-  .wishes-sidebar {
+  .wishes-right-side {
     width: 280px;
+    right: 15px;
+    top: 15px;
+    bottom: 15px;
   }
-  .main-content {
-    margin-left: 280px;
-  }
-  #final {
-    margin-left: 280px;
-  }
+  .letter { font-size: 20px; padding: 20px; }
+  .main-photo { width: 150px; height: 150px; }
 }
 
 @media (max-width: 700px) {
-  .wishes-sidebar {
-    width: 260px;
-  }
-  .main-content {
-    margin-left: 260px;
-  }
-  #final {
-    margin-left: 260px;
-  }
-  .ai-title { font-size: 22px; }
-  .letter { font-size: 20px; padding: 18px; }
-}
-
-@media (max-width: 600px) {
-  .wishes-sidebar {
-    width: 100%;
-    height: auto;
+  .wishes-right-side {
     position: relative;
-    border-right: none;
-    border-bottom: 2px solid #ffd700;
+    width: 100%;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin-top: 20px;
     max-height: 300px;
   }
-  .main-content {
-    margin-left: 0;
+  .center-content {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    margin: 20px auto;
   }
   #final {
-    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- ========= LEFT SIDEBAR - WISHES WALL ========= -->
-<div class="wishes-sidebar">
-  <div class="sidebar-title">
-    <span>💬</span> WISHES WALL <span>💬</span>
-  </div>
-  
-  <div id="wishesWallList">
-    <div style="text-align: center; color: #888; padding: 30px;">✨ Loading wishes... ✨</div>
-  </div>
-  
-  <div class="add-wish-section">
-    <div class="add-wish-title">✍️ LEAVE YOUR WISH</div>
-    <input type="text" id="sidebarName" class="sidebar-input" placeholder="✨ Your Name ✨" maxlength="30">
-    <input type="text" id="sidebarMessage" class="sidebar-input" placeholder="💝 Your Birthday Wish for Jayani 💝" maxlength="150">
-    <button class="sidebar-send-btn" id="sidebarSendBtn">💌 SEND WISH</button>
-  </div>
-</div>
-
-<!-- ========= MAIN CONTENT ========= -->
-<div class="main-content" id="mainContent">
-  <div class="dashboard-card" id="startCard">
+<!-- ========= SCREEN 1 - AI DASHBOARD ========= -->
+<div id="start">
+  <div class="dashboard-card">
     
     <div class="ai-header">
       <div class="ai-title">🤖 JAYANI AI 🤖</div>
@@ -481,10 +454,19 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <div class="mission-box">
-      <div class="mission-title">🎯 BIRTHDAY MISSION:</div>
-      <div class="mission-text">"Celebrate the amazing Jayani Bangaram"</div>
-      <div class="remaining-text" style="color: #e0c080; font-size: 11px; margin-top: 8px;">Status: 99% Complete • Remaining: Click START 🎉</div>
+    <!-- Guestbook Section -->
+    <div class="guestbook-section">
+      <div class="guestbook-title">💬 WISHES FOR JAYANI 💬</div>
+      
+      <div class="wishes-list" id="wishesList">
+        <div style="text-align: center; color: #888; padding: 20px;">✨ Loading wishes... ✨</div>
+      </div>
+      
+      <div class="wish-form">
+        <input type="text" id="wishName" class="wish-input" placeholder="✨ Your Name ✨" maxlength="30">
+        <input type="text" id="wishMessage" class="wish-input" placeholder="💝 Your Birthday Wish for Jayani 💝" maxlength="150">
+        <button class="send-btn" id="sendWishBtn">💌 SEND WISH</button>
+      </div>
     </div>
     
     <div class="btn-row">
@@ -497,19 +479,35 @@ body{
 
 <!-- ========= FINAL SCREEN ========= -->
 <div id="final">
-  <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani⭐'">
-  <div class="letter">
-    <div>⭐ Dear Jayani Bangaram ⭐</div>
-    <div>🎂 Happy Birthday 🎉</div>
-    <div>🤖 Our future AI Engineer 👩‍🎓</div>
-    <div>🌟 You are doing amazing 🌟</div>
-    <div>💪 Keep learning and growing 💪</div>
-    <div>😊 Believe in yourself always ✨</div>
-    <div>🚀 Big dreams are waiting for you 🌟</div>
-    <div>🏆 We are very proud of you ⭐</div>
-    <div>🎉 Enjoy your special day 🎁</div>
-    <div>✨ – Your Mama ✨</div>
+  
+  <!-- Wishes on Right Side - Top to Bottom -->
+  <div class="wishes-right-side">
+    <div class="wishes-header">
+      <h3>💬 WISHES WALL 💬</h3>
+      <p>From friends & family ❤️</p>
+    </div>
+    <div class="wishes-container" id="finalWishesContainer">
+      <div class="empty-wishes">✨ Loading wishes... ✨</div>
+    </div>
   </div>
+  
+  <!-- Center Content -->
+  <div class="center-content">
+    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani⭐'">
+    <div class="letter">
+      <div>⭐ Dear Jayani Bangaram ⭐</div>
+      <div>🎂 Happy Birthday 🎉</div>
+      <div>🤖 Our future AI Engineer 👩‍🎓</div>
+      <div>🌟 You are doing amazing 🌟</div>
+      <div>💪 Keep learning and growing 💪</div>
+      <div>😊 Believe in yourself always ✨</div>
+      <div>🚀 Big dreams are waiting for you 🌟</div>
+      <div>🏆 We are very proud of you ⭐</div>
+      <div>🎉 Enjoy your special day 🎁</div>
+      <div>✨ – Your Mama ✨</div>
+    </div>
+  </div>
+  
 </div>
 
 <script>
@@ -553,26 +551,44 @@ function loadWishes() {
     });
     wishes.reverse(); // Newest on top
     
-    // Update Sidebar Wishes Wall
-    const wishesWallList = document.getElementById('wishesWallList');
+    // Update First Page Wishes
+    const wishesList = document.getElementById('wishesList');
     if (wishes.length === 0) {
-      wishesWallList.innerHTML = '<div style="text-align: center; color: #888; padding: 30px;">✨ Be the first to wish Jayani! ✨</div>';
+      wishesList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px;">✨ Be the first to wish! ✨</div>';
     } else {
-      wishesWallList.innerHTML = wishes.map(w => `
-        <div class="wish-wall-item">
-          <div class="wish-wall-name">⭐ ${escapeHtml(w.name)}</div>
-          <div class="wish-wall-text">💝 ${escapeHtml(w.message)}</div>
-          <div class="wish-wall-time">${new Date(w.time).toLocaleString()}</div>
+      wishesList.innerHTML = wishes.map(w => `
+        <div class="wish-item">
+          <div class="wish-name">⭐ ${escapeHtml(w.name)}</div>
+          <div class="wish-text">💝 ${escapeHtml(w.message)}</div>
         </div>
       `).join('');
+    }
+    
+    // Update Final Screen Right Side Wishes
+    const finalContainer = document.getElementById('finalWishesContainer');
+    if (finalContainer) {
+      if (wishes.length === 0) {
+        finalContainer.innerHTML = '<div class="empty-wishes">✨ Be the first to wish Jayani! ✨</div>';
+      } else {
+        finalContainer.innerHTML = wishes.map(w => `
+          <div class="wish-right-item">
+            <div class="wish-right-name">⭐ ${escapeHtml(w.name)}</div>
+            <div class="wish-right-text">💝 ${escapeHtml(w.message)}</div>
+            <div class="wish-right-time">${new Date(w.time).toLocaleString()}</div>
+          </div>
+        `).join('');
+        
+        // Auto-scroll to top to show newest
+        finalContainer.scrollTop = 0;
+      }
     }
   });
 }
 
 // Send wish to Firebase
 function sendWish() {
-  const name = document.getElementById('sidebarName').value.trim();
-  const message = document.getElementById('sidebarMessage').value.trim();
+  const name = document.getElementById('wishName').value.trim();
+  const message = document.getElementById('wishMessage').value.trim();
   
   if (!name) {
     alert("✨ Please enter your name! ✨");
@@ -590,9 +606,9 @@ function sendWish() {
   };
   
   wishesRef.push(wish).then(() => {
-    document.getElementById('sidebarName').value = '';
-    document.getElementById('sidebarMessage').value = '';
-    alert("🎉 Thank you! Your wish has been added to the wall! 🎉");
+    document.getElementById('wishName').value = '';
+    document.getElementById('wishMessage').value = '';
+    alert("🎉 Thank you! Your wish has been added! 🎉");
   }).catch((error) => {
     alert("Sorry, couldn't send wish. Please try again! 🙏");
   });
@@ -642,11 +658,11 @@ function playSong() {
 // ========= BUTTON HANDLERS =========
 const startBtn = document.getElementById("start-btn");
 const laterBtn = document.getElementById("later-btn");
-const sidebarSendBtn = document.getElementById("sidebarSendBtn");
+const sendWishBtn = document.getElementById("sendWishBtn");
 
 startBtn.onclick = function() {
-  document.getElementById("startCard").style.display = "none";
-  document.getElementById("final").style.display = "flex";
+  document.getElementById("start").style.display = "none";
+  document.getElementById("final").style.display = "block";
   startFloatingPhotos();
   playSong();
 };
@@ -657,13 +673,13 @@ const messages = ["Nice try 😜", "Click START 🎉", "Celebrate! 🎂", "Don't
 laterBtn.onclick = function() {
   laterBtn.style.position = "fixed";
   laterBtn.style.top = Math.random() * 80 + "%";
-  laterBtn.style.left = (Math.random() * 60 + 350) + "px";
+  laterBtn.style.left = Math.random() * 80 + "%";
   laterBtn.innerText = messages[msgIndex++ % messages.length];
   laterBtn.style.transform = "rotate(5deg)";
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-sidebarSendBtn.onclick = sendWish;
+sendWishBtn.onclick = sendWish;
 
 // Preload images
 photoFiles.forEach(file => { const img = new Image(); img.src = file; });
@@ -673,7 +689,7 @@ loadWishes();
 
 // Preview floating photos
 setTimeout(() => {
-  if(document.getElementById("startCard").style.display !== "none") {
+  if(document.getElementById("start").style.display !== "none") {
     for(let i = 0; i < 5; i++) setTimeout(createFloatingPhoto, i * 400);
   }
 }, 1500);
