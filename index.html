@@ -16,7 +16,7 @@ body{
   position:relative;
 }
 
-/* ---------- MAIN CARD - AI DASHBOARD ---------- */
+/* ---------- MAIN CARD - ROYAL PURPLE & GOLD ---------- */
 #start{
   height:100vh;
   display:flex;
@@ -27,44 +27,45 @@ body{
 }
 
 .dashboard-card{
-  background: rgba(8, 8, 20, 0.95);
+  background: rgba(26, 10, 26, 0.95);
   padding: 35px;
   border-radius: 25px;
-  border: 2px solid #00ffcc;
-  box-shadow: 0 0 50px rgba(0, 255, 204, 0.3), inset 0 0 20px rgba(0, 255, 204, 0.1);
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.05);
   text-align: center;
   width: 90%;
   max-width: 650px;
   backdrop-filter: blur(8px);
   animation: glowPulse 2s ease-in-out infinite;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 40px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
-  50% { box-shadow: 0 0 70px rgba(0, 255, 204, 0.6); border-color: #33ffdd; }
+  0%, 100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.3); border-color: #ffd700; }
+  50% { box-shadow: 0 0 70px rgba(255, 215, 0, 0.5); border-color: #ffea80; }
 }
 
 /* Header Box */
 .ai-header {
-  background: linear-gradient(135deg, #0a0a1a, #1a1a2a);
+  background: linear-gradient(135deg, #1a0f1a, #2a1a2a);
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 25px;
-  border: 1px solid #00ffcc;
-  box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.1);
+  border: 1px solid #ffd700;
+  box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1);
 }
 
 .ai-title {
   font-size: 32px;
   font-weight: bold;
-  color: #00ffcc;
+  color: #ffd700;
   letter-spacing: 3px;
-  text-shadow: 0 0 10px #00ffcc;
+  text-shadow: 0 0 10px #ffd700;
+  font-family: 'Playfair Display', serif;
 }
 
 .ai-version {
-  color: #88aaff;
+  color: #e0c080;
   font-size: 14px;
   margin-top: 8px;
   letter-spacing: 2px;
@@ -80,8 +81,8 @@ body{
 }
 
 .stat-card {
-  background: rgba(0, 30, 30, 0.7);
-  border: 1px solid #00ffcc;
+  background: rgba(42, 26, 42, 0.7);
+  border: 1px solid #ffd700;
   border-radius: 15px;
   padding: 15px 25px;
   text-align: center;
@@ -91,7 +92,7 @@ body{
 
 .stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
 }
 
 .stat-icon {
@@ -101,14 +102,14 @@ body{
 }
 
 .stat-title {
-  color: #88aaff;
+  color: #e0c080;
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .stat-value {
-  color: #00ffcc;
+  color: #ffd700;
   font-size: 28px;
   font-weight: bold;
   font-family: 'Share Tech Mono', monospace;
@@ -116,15 +117,15 @@ body{
 
 /* Performance Section */
 .performance-section {
-  background: rgba(0, 20, 20, 0.6);
+  background: rgba(42, 26, 42, 0.5);
   border-radius: 15px;
   padding: 20px;
   margin: 20px 0;
-  border: 1px solid #2a5a5a;
+  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .section-title {
-  color: #00ffcc;
+  color: #ffd700;
   font-size: 16px;
   letter-spacing: 3px;
   margin-bottom: 15px;
@@ -139,7 +140,7 @@ body{
 .metric-label {
   display: flex;
   justify-content: space-between;
-  color: #bbccff;
+  color: #e0c080;
   font-size: 14px;
   margin-bottom: 5px;
 }
@@ -147,14 +148,14 @@ body{
 .metric-bar {
   width: 100%;
   height: 12px;
-  background: #1a2a2a;
+  background: #2a1a2a;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .metric-fill {
   height: 100%;
-  background: linear-gradient(90deg, #00ffcc, #33ffdd);
+  background: linear-gradient(90deg, #ffd700, #ffea80);
   width: 0%;
   border-radius: 10px;
   animation: fillBar 1.5s ease-out forwards;
@@ -166,37 +167,39 @@ body{
 
 /* Mission Box */
 .mission-box {
-  background: rgba(0, 255, 204, 0.05);
-  border: 1px solid #00ffcc;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid #ffd700;
   border-radius: 15px;
   padding: 20px;
   margin: 20px 0;
 }
 
 .mission-title {
-  color: #00ffcc;
+  color: #ffd700;
   font-size: 18px;
   margin-bottom: 12px;
   font-weight: bold;
 }
 
 .mission-text {
-  color: #e0e0ff;
+  color: #ffefc0;
   font-size: 16px;
   margin-bottom: 15px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .mission-status {
-  background: #0a1a1a;
+  background: #1a0f1a;
   border-radius: 10px;
   padding: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .status-bar {
   width: 100%;
   height: 8px;
-  background: #1a2a2a;
+  background: #2a1a2a;
   border-radius: 10px;
   overflow: hidden;
   margin: 8px 0;
@@ -205,7 +208,7 @@ body{
 .status-fill {
   width: 99%;
   height: 100%;
-  background: linear-gradient(90deg, #00ffcc, #33ffdd);
+  background: linear-gradient(90deg, #ffd700, #ffea80);
   border-radius: 10px;
   animation: statusPulse 1s ease-in-out infinite;
 }
@@ -216,7 +219,7 @@ body{
 }
 
 .remaining-text {
-  color: #88aaff;
+  color: #e0c080;
   font-size: 12px;
   margin-top: 8px;
 }
@@ -238,30 +241,33 @@ body{
   border-radius: 40px;
   cursor: pointer;
   transition: all 0.3s;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 2px;
 }
 
 #start-btn {
-  background: linear-gradient(135deg, #00ccaa, #00ffcc);
-  color: #0a0a1a;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  background: linear-gradient(135deg, #8b0000, #5e0000);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
 }
 
 #start-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(0, 255, 204, 0.8);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #a00000, #6b0000);
 }
 
 #later-btn {
-  background: #1a2a2a;
-  color: #88aaff;
-  border: 1px solid #00ffcc;
+  background: #2a1a2a;
+  color: #e0c080;
+  border: 1px solid #ffd700;
 }
 
 #later-btn:hover {
-  background: #2a3a3a;
+  background: #3a2a3a;
   transform: scale(1.02);
+  color: #ffd700;
 }
 
 /* ---------- FINAL SCREEN ---------- */
@@ -285,19 +291,19 @@ body{
   width:180px;
   height:180px;
   border-radius:50%;
-  border:3px solid #00ffcc;
+  border:3px solid #ffd700;
   object-fit:cover;
-  box-shadow:0 0 40px rgba(0, 255, 204, 0.5);
+  box-shadow:0 0 40px rgba(255, 215, 0, 0.5);
   animation: gentlePulse 2s ease-in-out infinite;
 }
 
 @keyframes gentlePulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(0, 255, 204, 0.4); }
-  50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(0, 255, 204, 0.8); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+  50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
 }
 
 .letter{
-  color: #00ffcc;
+  color: #ffd700;
   font-size:26px;
   text-align:center;
   line-height:1.8;
@@ -305,13 +311,13 @@ body{
   background:rgba(0,0,0,0.8);
   padding:25px 35px;
   border-radius:20px;
-  border:1px solid #00ffcc;
+  border:1px solid #ffd700;
   max-width:500px;
   width:90%;
   margin:0 auto;
   position:relative;
   z-index:20;
-  box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
 /* ---------- FLOATING PHOTOS (1.JPG to 9.jpg) ---------- */
@@ -322,8 +328,8 @@ body{
   height:70px;
   border-radius:50% !important;
   object-fit:cover;
-  border:2px solid #00ffcc;
-  box-shadow:0 0 20px rgba(0, 255, 204, 0.5);
+  border:2px solid #ffd700;
+  box-shadow:0 0 20px rgba(255, 215, 0, 0.5);
   animation:floatUp 9s linear forwards;
   z-index:1000;
   pointer-events:none;
@@ -353,7 +359,7 @@ body{
 </head>
 <body>
 
-<!-- ========= SCREEN 1 - AI DASHBOARD ========= -->
+<!-- ========= SCREEN 1 - AI DASHBOARD (PURPLE & GOLD) ========= -->
 <div id="start">
   <div class="dashboard-card">
     
