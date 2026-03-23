@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Jayani Bangaram ❤️</title>
+<title>Happy Birthday Jayani Bangaram 🎂</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -12,971 +12,207 @@ body{
   height:100vh;
   overflow:hidden;
   font-family:'Poppins',sans-serif;
-  
-  /* ✨ BLACK & GOLD - CLEAN & ELEGANT ✨ */
   background: linear-gradient(145deg, #0a0504, #000000);
 }
 
-/* Subtle gold sparkle */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.02) 0%, transparent 80%);
-  pointer-events: none;
-}
-
-/* ---------- FIRST SCREEN - PREMIUM SUBSCRIPTION BOX ---------- */
+/* ---------- MAIN CARD ---------- */
 #start{
   height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
-  position:relative;
-  z-index:10;
 }
 
-.premium-card {
-  background: rgba(10,5,4,0.9);
-  padding: 50px 40px;
-  border-radius: 30px;
-  border: 2px solid #ffd700;
-  box-shadow: 0 0 80px rgba(255,215,0,0.25);
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-  backdrop-filter: blur(10px);
-}
-
-/* Decorative gold corners */
-.corner {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-}
-.corner-tl {
-  top: 20px;
-  left: 20px;
-  border-top: 3px solid #ffd700;
-  border-left: 3px solid #ffd700;
-}
-.corner-tr {
-  top: 20px;
-  right: 20px;
-  border-top: 3px solid #ffd700;
-  border-right: 3px solid #ffd700;
-}
-.corner-bl {
-  bottom: 20px;
-  left: 20px;
-  border-bottom: 3px solid #ffd700;
-  border-left: 3px solid #ffd700;
-}
-.corner-br {
-  bottom: 20px;
-  right: 20px;
-  border-bottom: 3px solid #ffd700;
-  border-right: 3px solid #ffd700;
-}
-
-/* Diamond icon */
-.diamond {
-  font-size: 60px;
-  color: #ffd700;
-  margin-bottom: 15px;
-  text-shadow: 0 0 30px rgba(255,215,0,0.8);
-  animation: diamondPulse 2s ease-in-out infinite;
-}
-
-@keyframes diamondPulse {
-  0%, 100% { transform: scale(1); text-shadow: 0 0 30px rgba(255,215,0,0.8); }
-  50% { transform: scale(1.1); text-shadow: 0 0 60px rgba(255,215,0,1); }
-}
-
-.membership-badge {
-  background: #4a2c2c;  /* Deep Burgundy - NO RED */
-  color: #ffd700;
-  display: inline-block;
-  padding: 10px 30px;
-  border-radius: 40px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  margin-bottom: 25px;
-  border: 1px solid #ffd700;
-  box-shadow: 0 0 25px rgba(74,44,44,0.6);
-  text-transform: uppercase;
-}
-
-.wife-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5em;
-  color: #ffd700;
-  margin: 10px 0 5px;
-  text-shadow: 0 0 40px rgba(255,215,0,0.7);
-  letter-spacing: 6px;
-  font-weight: 700;
-}
-
-.premium-tag {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.8em;
-  color: #e0c080;
-  margin-bottom: 30px;
-  border-bottom: 1px solid rgba(255,215,0,0.3);
-  padding-bottom: 20px;
-}
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #ffd700, transparent);
-  margin: 25px 0;
-}
-
-.plan-details {
-  text-align: left;
-  margin: 30px 0;
-  padding: 0 20px;
-}
-
-.plan-row {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 18px;
-  color: #fff3e0;
-  font-size: 1.2em;
-}
-
-.plan-label {
-  color: #d4af37;
-  font-weight: 600;
-  min-width: 100px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.9em;
-}
-
-.plan-value {
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.status-active {
-  color: #ff69b4;
-  font-weight: 600;
-  letter-spacing: 2px;
-}
-
-.benefits-box {
-  background: rgba(255,215,0,0.05);
-  border: 1px solid rgba(255,215,0,0.2);
-  border-radius: 20px;
-  padding: 25px 20px;
-  margin: 30px 0;
-}
-
-.benefits-title {
-  color: #ffd700;
-  font-size: 1.2em;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.benefits-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.benefit-item {
-  background: rgba(74,44,44,0.3);  /* Deep Burgundy - NO RED */
-  color: #fff3e0;
-  padding: 10px 20px;
-  border-radius: 40px;
-  font-size: 1em;
-  border: 1px solid rgba(255,215,0,0.3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.benefit-item i {
-  font-style: normal;
-  font-size: 1.2em;
-}
-
-.renewal-question {
-  font-size: 1.8em;
-  color: #ffd700;
-  font-weight: 500;
-  margin: 30px 0 25px;
-  letter-spacing: 2px;
-  font-family: 'Playfair Display', serif;
-}
-
-.btnRow{
-  display:flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
-
-/* ---------- IRRESISTIBLE YES, FOREVER BUTTON ---------- */
-#yes {
-  padding: 20px 50px;
-  font-size: 24px;
-  font-weight: 700;
-  border: none;
-  border-radius: 60px;
-  cursor: pointer;
-  background: linear-gradient(145deg, #6b3a3a, #4a2c2c);  /* Deep Burgundy - NO RED */
-  color: #ffd700;
-  border: 2px solid #ffd700;
-  box-shadow: 0 0 30px rgba(255,215,0,0.4);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s;
-  animation: irresistiblePulse 1.8s ease-in-out infinite;
-}
-
-/* Glowing pulse animation */
-@keyframes irresistiblePulse {
-  0% { box-shadow: 0 0 30px rgba(255,215,0,0.4), 0 0 60px rgba(255,215,0,0.2); transform: scale(1); }
-  50% { box-shadow: 0 0 60px rgba(255,215,0,0.8), 0 0 100px rgba(255,215,0,0.5); transform: scale(1.08); }
-  100% { box-shadow: 0 0 30px rgba(255,215,0,0.4), 0 0 60px rgba(255,215,0,0.2); transform: scale(1); }
-}
-
-/* Sparkle effect */
-#yes::before {
-  content: '✨';
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24px;
-  opacity: 0.9;
-  animation: sparkle 1.5s ease-in-out infinite;
-}
-
-#yes::after {
-  content: '✨';
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24px;
-  opacity: 0.9;
-  animation: sparkle 1.5s ease-in-out infinite 0.5s;
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); }
-  50% { opacity: 1; transform: translateY(-50%) scale(1.3); }
-}
-
-/* Hover effect - reveals secret message */
-#yes:hover {
-  background: linear-gradient(145deg, #7a4a4a, #5a3a3a);
-  border-color: #fff3b0;
-  transform: scale(1.12);
-  box-shadow: 0 0 80px rgba(255,215,0,0.9);
-}
-
-#yes:hover::after {
-  content: '🎁 CLICK FOR SURPRISE 🎁';
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffd700;
-  color: #4a2c2c;
-  padding: 10px 20px;
-  border-radius: 40px;
-  font-size: 16px;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 0 30px rgba(255,215,0,0.8);
-  animation: none;
-  letter-spacing: 2px;
-}
-
-/* ---------- NOT TODAY BUTTON ---------- */
-#no{
-  padding: 16px 40px;
-  font-size: 20px;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  background: #2c2c2c;
-  color: #c0c0c0;
-  border: 1px solid #4a4a4a;
-  transition: all 0.2s;
-  position: relative;
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-#no:hover {
-  background: #3a3a3a;
-  color: #ffffff;
-}
-
-/* Shake animation */
-.shake {
-  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  20% { transform: translate(-3px, 0px) rotate(-1deg); }
-  40% { transform: translate(3px, 2px) rotate(1deg); }
-  60% { transform: translate(-3px, 1px) rotate(-1deg); }
-  80% { transform: translate(2px, -1px) rotate(0deg); }
-  100% { transform: translate(0px, 0px) rotate(0deg); }
-}
-
-/* ---------- BEAUTIFUL MEMORIES BUTTON ---------- */
-#memories{
-  display:none;
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:100;
+.card{
   background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(5px);
-  padding:16px 32px;
-  border-radius:50px;
-  box-shadow:0 0 20px rgba(255,215,0,0.3);
-  border:1.5px solid #ffd700;
-  cursor:pointer;
-  transition:0.3s;
-  font-weight:600;
-  color: #ffd700;
-  font-size:20px;
-  letter-spacing: 2px;
-  font-family: 'Playfair Display', serif;
-}
-
-#memories:hover{
-  background: #000;
-  border-color: #fff3b0;
-  color: #fff3b0;
-  transform:translateX(-50%) scale(1.05);
-  box-shadow: 0 0 30px rgba(255,215,0,0.6);
-}
-
-/* ---------- MEMORY MODAL ---------- */
-.modal{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(10px);
-  z-index:1000;
-  justify-content:center;
-  align-items:center;
-}
-
-.modal-content{
-  background: #0a0504;
   padding:40px;
-  border-radius:20px;
-  max-width:650px;
+  border-radius:25px;
+  border:2px solid gold;
+  text-align:center;
   width:90%;
-  max-height:80vh;
-  overflow-y:auto;
-  position:relative;
-  border: 1px solid #ffd700;
-  box-shadow: 0 0 50px rgba(255,215,0,0.1);
+  max-width:600px;
+  box-shadow:0 0 40px rgba(255,215,0,0.4);
 }
 
-.close-modal{
-  position:absolute;
-  top:15px;
-  right:20px;
-  font-size:30px;
+.title{
+  font-size:38px;
+  color:gold;
+  font-family:'Playfair Display', serif;
+}
+
+.subtitle{
+  color:#e0c080;
+  font-size:20px;
+  margin-bottom:15px;
+  font-family:'Dancing Script', cursive;
+}
+
+.info{
+  text-align:left;
+  margin:20px 0;
+}
+
+.row{
+  margin:10px 0;
+  color:white;
+}
+
+.label{
+  color:gold;
+  font-weight:bold;
+}
+
+button{
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
   cursor:pointer;
-  color: #ffd700;
-  transition:0.2s;
+  margin:10px;
 }
 
-.close-modal:hover{
-  color: #fff3b0;
-  transform:scale(1.2);
+#yes{
+  background:gold;
+  font-weight:bold;
 }
 
-/* ---------- TIMELINE ---------- */
-.timeline-item {
-  background: rgba(255,215,0,0.05);
-  border-left: 4px solid #ffd700;
-  border-radius: 0 15px 15px 0;
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: 0.2s;
+#no{
+  background:#333;
+  color:white;
 }
 
-.timeline-item:hover {
-  background: rgba(255,215,0,0.08);
-  border-left: 4px solid #fff3b0;
-}
-
-.timeline-item h3 {
-  color: #ffd700;
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  margin: 0;
-}
-
-.timeline-item p {
-  color: #e0e0e0;
-  font-size: 16px;
-  margin: 8px 0 0;
-}
-
-/* ---------- REASONS CARDS ---------- */
-.reason-card {
-  background: rgba(255,215,0,0.03);
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid #4a3a1a;
-  transition: 0.2s;
-}
-
-.reason-card:hover {
-  border-color: #ffd700;
-  background: rgba(255,215,0,0.08);
-}
-
-.reason-cover {
-  background: #2a1a0a;
-  color: #ffd700;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  border: 1px solid #6b4a1a;
-}
-
-/* ---------- FINAL SCREEN ---------- */
+/* ---------- FINAL ---------- */
 #final{
   display:none;
   height:100vh;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  position:relative;
-  z-index:20;
-  padding:20px;
-  box-sizing:border-box;
-}
-
-.photo-container {
-  position:relative;
-  margin-bottom:20px;
 }
 
 .photo{
-  width:200px;
-  height:200px;
+  width:180px;
+  height:180px;
   border-radius:50%;
-  border:3px solid #ffd700;
-  object-fit:cover;
-  box-shadow:0 0 30px rgba(255,215,0,0.3);
-  animation: gentleFloat 4s ease-in-out infinite;
-}
-
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  border:3px solid gold;
+  margin-bottom:20px;
 }
 
 .letter{
-  background: rgba(10,5,4,0.95);
-  padding:35px 45px;
-  border-radius:20px;
-  font-family:'Dancing Script',cursive;
-  font-size:30px;
-  color: #ffd700;
-  line-height:1.7;
-  border:1px solid #ffd700;
-  max-width:600px;
-  width:90%;
-  margin:0 auto;
-  max-height:60vh;
-  overflow-y:auto;
-  box-shadow: 0 0 50px rgba(255,215,0,0.15);
+  color:gold;
+  font-size:26px;
+  text-align:center;
+  line-height:1.8;
+  font-family:'Dancing Script', cursive;
 }
 
-.letter::before{
-  content:'“';
-  position:absolute;
-  top:-10px;
-  left:20px;
-  font-size:70px;
-  color: rgba(255,215,0,0.2);
-  font-family:serif;
-}
-
-.letter::after{
-  content:'”';
-  position:absolute;
-  bottom:-10px;
-  right:20px;
-  font-size:70px;
-  color: rgba(255,215,0,0.2);
-  font-family:serif;
-}
-
-.line{
-  opacity:0;
-  animation:fadeIn 0.6s forwards;
-}
-
-@keyframes fadeIn{
-  to{opacity:1;}
-}
-
-/* ---------- PINK HEARTS - FLOATING ---------- */
+/* hearts */
 .heart{
   position:fixed;
   bottom:-20px;
-  color: #ff69b4;
-  font-size:28px;
-  animation:floatUp 6s linear forwards;
-  z-index:1000;
-  pointer-events:none;
-  text-shadow:0 0 15px rgba(255,105,180,0.7);
+  font-size:25px;
+  animation:float 5s linear forwards;
 }
 
-@keyframes floatUp{
+@keyframes float{
   to{
-    transform:translateY(-120vh);
+    transform:translateY(-100vh);
     opacity:0;
   }
-}
-
-/* ---------- 13 PHOTOS - CIRCLE SHAPE, FLOATING UP ---------- */
-.floating-photo-circle{
-  position:fixed;
-  bottom:-100px;
-  width:70px;
-  height:70px;
-  border-radius:50% !important;
-  object-fit:cover;
-  border:3px solid #ffd700;
-  box-shadow:0 0 25px rgba(255,215,0,0.6);
-  animation:floatPhotoCircle 10s linear forwards;
-  z-index:1000;
-  pointer-events:none;
-}
-
-@keyframes floatPhotoCircle{
-  to{
-    transform:translateY(-140vh) rotate(360deg);
-    opacity:0;
-  }
-}
-
-/* ---------- LOVE METER ---------- */
-#loveMeter {
-  display: none;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(0,0,0,0.9);
-  padding: 12px 20px;
-  border-radius: 40px;
-  align-items: center;
-  gap: 12px;
-  z-index: 200;
-  border: 1px solid #ffd700;
-  box-shadow: 0 0 30px rgba(255,215,0,0.2);
-}
-
-#loveMeter span {
-  color: #ffd700;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.meter-bar {
-  width: 120px;
-  height: 8px;
-  background: #2a1a0a;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.meter-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #6b3a3a, #ffd700);
-  border-radius: 10px;
-  transition: width 1s;
-}
-
-#lovePercentage {
-  color: #ffd700;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width:768px){
-  .premium-card { padding: 30px 20px; }
-  .wife-name { font-size: 3.2em; }
-  .premium-tag { font-size: 1.5em; }
-  .plan-row { font-size: 1em; }
-  .plan-label { min-width: 90px; }
-  .benefits-grid { gap: 10px; }
-  .benefit-item { padding: 8px 16px; font-size: 0.9em; }
-  .renewal-question { font-size: 1.5em; }
-  .btnRow { gap: 15px; }
-  #yes, #no { padding: 14px 30px; font-size: 18px; }
-  #yes::before, #yes::after { font-size: 18px; }
-  #yes:hover::after { font-size: 14px; padding: 8px 16px; top: -40px; white-space: normal; width: 200px; }
-  .letter { font-size: 26px; padding: 25px 30px; }
-  .photo { width: 170px; height: 170px; }
-  .floating-photo-circle { width: 60px; height: 60px; }
-}
-
-@media (max-width:480px){
-  .wife-name { font-size: 2.5em; }
-  .premium-tag { font-size: 1.3em; }
-  .membership-badge { font-size: 14px; padding: 8px 20px; }
-  .benefit-item { padding: 6px 12px; font-size: 0.85em; }
-  #yes { font-size: 16px; padding: 12px 25px; }
-  #no { font-size: 16px; padding: 12px 25px; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- ========= SCREEN 1 - PREMIUM SUBSCRIPTION BOX ========= -->
+<!-- SCREEN 1 -->
 <div id="start">
-  <div class="premium-card">
-    <div class="corner corner-tl"></div>
-    <div class="corner corner-tr"></div>
-    <div class="corner corner-bl"></div>
-    <div class="corner corner-br"></div>
-    
-    <div class="diamond">💎</div>
-    <div class="membership-badge">✦ PREMIUM MEMBERSHIP ✦</div>
-    
-    <div class="wife-name">SIRI</div>
-    <div class="premium-tag">My Wife, My Queen, My Forever</div>
-    
-    <div class="divider"></div>
-    
-    <div class="plan-details">
-      <div class="plan-row">
-        <span class="plan-label">PLAN:</span>
-        <span class="plan-value" style="color: #ffd700; font-weight: 700;">LIFETIME PREMIUM</span>
-      </div>
-      <div class="plan-row">
-        <span class="plan-label">STATUS:</span>
-        <span class="plan-value status-active">❤️ ACTIVE</span>
-      </div>
-      <div class="plan-row">
-        <span class="plan-label">MEMBER:</span>
-        <span class="plan-value">SINCE OUR WEDDING DAY</span>
-      </div>
-    </div>
-    
-    <div class="benefits-box">
-      <div class="benefits-title">🔴 UNLIMITED BENEFITS 🔴</div>
-      <div class="benefits-grid">
-        <span class="benefit-item"><i>❤️</i> Daily Hugs</span>
-        <span class="benefit-item"><i>❤️</i> Forever Support</span>
-        <span class="benefit-item"><i>🛍️</i> Window Shopping</span>
-        <span class="benefit-item"><i>💬</i> Laughter</span>
-        <span class="benefit-item"><i>⭐</i> Adventure</span>
-        <span class="benefit-item"><i>🏠</i> Home</span>
-        <span class="benefit-item"><i>❤️</i> Infinite Love</span>
-      </div>
-    </div>
-    
-    <div class="renewal-question">
-      Renew our journey together?
-    </div>
-    
-    <div class="btnRow">
-      <button id="yes">✨ YES, FOREVER ✨</button>
-      <button id="no">NOT TODAY ⬇️</button>
-    </div>
-  </div>
-</div>
+  <div class="card">
 
-<!-- ========= LOVE METER ========= -->
-<div id="loveMeter">
-  <span>❤️ Love Level</span>
-  <div class="meter-bar">
-    <div id="loveFill" class="meter-fill"></div>
-  </div>
-  <span id="lovePercentage">100%</span>
-</div>
+    <div class="title">💎 AI ELITE PROGRAM 💎</div>
+    <div class="subtitle">Future AI Engineer 👩‍💻🤖</div>
 
-<!-- ========= BEAUTIFUL MEMORIES BUTTON ========= -->
-<button id="memories">📸 BEAUTIFUL MEMORIES</button>
+    <h2 style="color:gold;">Jayani Bangaram 🎂</h2>
 
-<!-- ========= BEAUTIFUL MEMORIES MODAL ========= -->
-<div id="memoryModal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    
-    <h2 style="color: #ffd700; font-family: 'Playfair Display', serif; font-size: 42px; margin-top: 0; margin-bottom: 10px; text-align: center; border-bottom: 2px solid #ffd700; padding-bottom: 15px;">
-      ✦ BEAUTIFUL MEMORIES ✦
-    </h2>
-    
-    <p style="color: #e0c080; text-align: center; font-size: 20px; margin-bottom: 30px; font-family: 'Dancing Script', cursive;">
-      Our journey together, captured in gold ❤️
-    </p>
-    
-    <div style="margin: 30px 0;">
-      <div class="timeline-item">
-        <span style="font-size:36px; color: #ffd700; display:block; margin-bottom:10px;">💑</span>
-        <h3>The Day We Met</h3>
-        <p>When two hearts became one story ✨</p>
-      </div>
-      
-      <div class="timeline-item">
-        <span style="font-size:36px; color: #ffd700; display:block; margin-bottom:10px;">💍</span>
-        <h3>Our Wedding Day</h3>
-        <p>The day I promised you forever ❤️</p>
-      </div>
-      
-      <div class="timeline-item">
-        <span style="font-size:36px; color: #ffd700; display:block; margin-bottom:10px;">🏠</span>
-        <h3>Building Our Life</h3>
-        <p>Every moment with you is a treasure 🏡</p>
-      </div>
+    <div class="info">
+      <div class="row"><span class="label">COURSE:</span> B.Tech AI Engineering 🎓</div>
+      <div class="row"><span class="label">YEAR:</span> 2nd Year 🚀</div>
+      <div class="row"><span class="label">STATUS:</span> Level Up 🔥</div>
     </div>
-    
-    <h3 style="color: #ffd700; margin-top: 40px; margin-bottom: 25px; text-align: center; font-size: 30px; font-family: 'Playfair Display', serif; border-top: 1px solid rgba(255,215,0,0.3); padding-top: 30px;">
-      ✦ 100 REASONS I LOVE YOU ✦
+
+    <div style="color:#fff3e0;">
+      🤖 AI Thinking<br>
+      💻 Coding Skills<br>
+      📊 Data Intelligence<br>
+      🧠 Smart Brain<br>
+      🚀 Future Success<br>
+      ❤️ Family Support
+    </div>
+
+    <h3 style="color:gold; margin-top:20px;">
+      Ready to celebrate your big day? 🎉
     </h3>
-    
-    <div id="reasonsGrid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px; margin:20px 0;"></div>
+
+    <button id="yes">🎉 START 🎉</button>
+    <button id="no">WAIT 😜</button>
+
   </div>
 </div>
 
-<!-- ========= FINAL SCREEN ========= -->
+<!-- FINAL -->
 <div id="final">
-  <div class="photo-container">
-    <img src="siri.jpg" class="photo" id="wifePhoto" onerror="this.src='https://via.placeholder.com/200?text=Siri❤️'">
-  </div>
-  
+
+  <img src="Bangaram.jpg" class="photo">
+
   <div class="letter">
-    <div class="line" style="animation-delay:0.2s">Dear Siri,</div>
-    <div class="line" style="animation-delay:0.5s">Subscription renewed successfully 🎁</div>
-    <div class="line" style="animation-delay:0.8s">No cancellation allowed forever 😊</div>
-    <div class="line" style="animation-delay:1.1s">Jokes apart...</div>
-    <div class="line" style="animation-delay:1.4s">Happy anniversary my love Siri ❤️</div>
-    <div class="line" style="animation-delay:1.7s">You're not just my wife,</div>
-    <div class="line" style="animation-delay:2.0s">you're my best friend,</div>
-    <div class="line" style="animation-delay:2.3s">my peace, my happiness,</div>
-    <div class="line" style="animation-delay:2.6s">and my forever. ❤️</div>
-    <div class="line" style="animation-delay:2.9s">Love you always & forever ❤️</div>
-    <div class="line" style="animation-delay:3.2s">– Vasu</div>
+    Dear Jayani Bangaram 💖<br><br>
+
+    Happy Birthday 🎂🎉<br><br>
+
+    Our future AI Engineer 👩‍💻🤖<br>
+    You are doing amazing 🎓<br><br>
+
+    Keep learning and growing 🚀<br>
+    Believe in yourself always 💪<br><br>
+
+    Big dreams are waiting for you 🌟<br>
+    We are very proud of you ❤️<br><br>
+
+    Enjoy your special day 🎁<br><br>
+
+    – Your Mama 💖
   </div>
+
 </div>
 
 <script>
-/* ---------- NO BUTTON ESCAPE ---------- */
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
-const msgs = [
-  "Nice try 😜",
-  "No cancellation 🚫",
-  "Lifetime plan only ❤️",
-  "Marriage is non-refundable ✦",
-  "Press YES ❤️",
-  "Forever with me? 💕"
-];
-
-let i = 0;
-let grow = 1;
-
-function escape() {
-  noBtn.classList.add('shake');
-  setTimeout(() => noBtn.classList.remove('shake'), 500);
-  
-  noBtn.style.position = "fixed";
-  noBtn.style.left = Math.random() * 80 + "%";
-  noBtn.style.top = Math.random() * 80 + "%";
-  
-  noBtn.innerText = msgs[i++ % msgs.length] + " ⬇️";
-  
-  grow += 0.1;
-  yesBtn.style.transform = `scale(${grow})`;
-}
-
-noBtn.addEventListener("click", escape);
-noBtn.addEventListener("touchstart", escape);
-
-noBtn.addEventListener("mouseover", function() {
-  this.classList.add('shake');
-  setTimeout(() => this.classList.remove('shake'), 400);
-});
-
-/* ---------- YES CLICK - MAIN EVENT ---------- */
-let audio = null;
-let photoInterval = null;
-let heartInterval = null;
-
-yesBtn.onclick = function() {
-  document.getElementById("start").style.display = "none";
-  document.getElementById("final").style.display = "flex";
-  document.getElementById("loveMeter").style.display = "flex";
-  document.getElementById("memories").style.display = "block";
-  
-  try {
-    audio = new Audio("kesariya.mp3");
-    audio.loop = true;
-    audio.volume = 0.5;
-    audio.play();
-  } catch(e) {
-    console.log("Audio play failed:", e);
-  }
-  
-  startPinkHearts();
-  startFloatingCirclePhotos();
-  increaseLoveMeter();
-  populateReasons();
+yes.onclick = function(){
+  document.getElementById("start").style.display="none";
+  document.getElementById("final").style.display="flex";
+  startHearts();
 };
 
-/* ---------- LOVE METER ---------- */
-function increaseLoveMeter() {
-  const fill = document.getElementById('loveFill');
-  const percent = document.getElementById('lovePercentage');
-  fill.style.width = '100%';
-  percent.innerText = '100%';
-}
+no.onclick = function(){
+  no.style.position="absolute";
+  no.style.top=Math.random()*80+"%";
+  no.style.left=Math.random()*80+"%";
+};
 
-/* ---------- 100 REASONS ---------- */
-function populateReasons() {
-  const reasons = [
-    "Your smile", "Your laugh", "Your kindness", "Your strength",
-    "The way you care", "Your patience", "Your beautiful eyes", "Your hugs",
-    "You believe in me", "You make me better", "Your voice", "Your understanding",
-    "You are my peace", "You are beautiful", "You support my dreams",
-    "You are my best friend", "You forgive me", "You make our house a home",
-    "You love me unconditionally", "Your courage", "Your honesty", "Your loyalty"
-  ];
-  
-  let html = '';
-  for(let i = 0; i < 22; i++) {
-    let r = reasons[i % reasons.length];
-    html += `
-      <div class="reason-card" onclick="this.innerHTML='<div style=\\'color: #ffd700; font-weight:600; padding:15px;\\'>❤️ ${r}</div>';">
-        <div class="reason-cover">❤️ CLICK TO REVEAL</div>
-      </div>
-    `;
-  }
-  document.getElementById('reasonsGrid').innerHTML = html;
-}
-
-/* ---------- PINK HEARTS ---------- */
-function createPinkHeart() {
-  const h = document.createElement("div");
-  h.className = "heart";
-  
-  const hearts = ["❤️", "💖", "💗", "💓", "💕", "💘", "💝"];
-  h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-  
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (Math.random() * 3 + 5) + "s";
-  h.style.fontSize = (Math.random() * 20 + 25) + "px";
-  h.style.color = "#ff69b4";
-  
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
   document.body.appendChild(h);
-  setTimeout(() => h.remove(), 6000);
+  setTimeout(()=>h.remove(),5000);
 }
 
-function startPinkHearts() {
-  if(heartInterval) clearInterval(heartInterval);
-  for(let j = 0; j < 30; j++) setTimeout(createPinkHeart, j * 80);
-  heartInterval = setInterval(createPinkHeart, 200);
+function startHearts(){
+  setInterval(createHeart,200);
 }
-
-/* ---------- 13 PHOTOS - CIRCLE SHAPE ---------- */
-const photoFiles = [
-  "1.jpg", "2.jpg", "3.jpg", "4.JPG", "5.JPG", "6.JPG", "7.JPG", 
-  "8.JPG", "9.JPG", "10.JPG", "11.JPG", "12.jpg", "13.jpg"
-];
-
-function createFloatingCirclePhoto() {
-  const photo = document.createElement("img");
-  photo.className = "floating-photo-circle";
-  
-  const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
-  photo.src = randomPhoto;
-  
-  photo.style.left = Math.random() * 100 + "vw";
-  photo.style.bottom = "-100px";
-  
-  const size = Math.floor(Math.random() * 40) + 60;
-  photo.style.width = size + "px";
-  photo.style.height = size + "px";
-  photo.style.borderRadius = "50%";
-  photo.style.animationDuration = (Math.random() * 4 + 8) + "s";
-  photo.style.border = "3px solid #ffd700";
-  
-  document.body.appendChild(photo);
-  setTimeout(() => photo.remove(), 12000);
-}
-
-function startFloatingCirclePhotos() {
-  if(photoInterval) clearInterval(photoInterval);
-  for(let j = 0; j < 13; j++) {
-    setTimeout(createFloatingCirclePhoto, j * 200);
-  }
-  photoInterval = setInterval(createFloatingCirclePhoto, 800);
-}
-
-/* ---------- MEMORIES MODAL ---------- */
-const modal = document.getElementById('memoryModal');
-const memoriesBtn = document.getElementById('memories');
-const closeBtn = document.querySelector('.close-modal');
-
-memoriesBtn.onclick = function() {
-  modal.style.display = 'flex';
-};
-
-closeBtn.onclick = function() {
-  modal.style.display = 'none';
-};
-
-window.onclick = function(e) {
-  if(e.target == modal) {
-    modal.style.display = 'none';
-  }
-};
-
-/* ---------- INITIAL SETUP ---------- */
-document.getElementById('memories').style.display = 'none';
-document.getElementById('loveMeter').style.display = 'none';
 </script>
 
 </body>
