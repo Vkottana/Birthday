@@ -271,7 +271,7 @@ body{
   color: #ffd700;
 }
 
-/* ---------- FINAL SCREEN ---------- */
+/* ---------- FINAL SCREEN - BIGGER PHOTOS ---------- */
 #final{
   display:none;
   min-height: 100vh;
@@ -285,58 +285,58 @@ body{
 
 .main-photo-container {
   position:relative;
-  margin-bottom:20px;
+  margin-bottom: 30px;
   z-index:20;
 }
 
 .main-photo{
-  width:160px;
-  height:160px;
+  width: 240px;
+  height: 240px;
   border-radius:50%;
-  border:3px solid #ffd700;
+  border: 4px solid #ffd700;
   object-fit:cover;
-  box-shadow:0 0 40px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
   animation: gentlePulse 2s ease-in-out infinite;
 }
 
 @keyframes gentlePulse {
   0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
-  50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+  50% { transform: scale(1.03); box-shadow: 0 0 60px rgba(255, 215, 0, 0.9); }
 }
 
 .letter{
   color: #ffd700;
-  font-size: 26px;
+  font-size: 28px;
   text-align:center;
   line-height: 2;
   font-family:'Dancing Script', cursive;
   background:rgba(0,0,0,0.85);
-  padding:30px 40px;
-  border-radius:25px;
+  padding: 35px 45px;
+  border-radius:30px;
   border:1px solid #ffd700;
-  max-width:550px;
-  width:90%;
-  margin:0 auto;
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
   position:relative;
   z-index:20;
-  box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
 }
 
 .letter div {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
-/* ---------- FLOATING PHOTOS ---------- */
+/* ---------- FLOATING PHOTOS - BIGGER SIZE ---------- */
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width:80px;
-  height:80px;
+  width: 95px;
+  height: 95px;
   border-radius:50% !important;
   object-fit:cover;
-  border:3px solid #ffd700;
-  box-shadow:0 0 25px rgba(255, 215, 0, 0.7);
-  animation:floatUp 9s linear forwards;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  animation:floatUp 10s linear forwards;
   z-index:1000;
   pointer-events:none;
 }
@@ -352,7 +352,7 @@ body{
   }
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE - MOBILE OPTIMIZED (BIGGER PHOTOS) ---------- */
 @media (max-width:600px){
   .dashboard-card{padding:20px;}
   .ai-title{font-size:24px;}
@@ -361,9 +361,44 @@ body{
   .metric-label{font-size:11px;}
   .mission-text{font-size:13px;}
   .dashboard-btn{padding:10px 25px;font-size:15px;}
-  .letter{font-size:22px;padding:20px 25px; line-height: 1.8;}
-  .main-photo{width:130px;height:130px;}
-  .floating-photo{width:65px;height:65px;}
+  
+  /* BIGGER MAIN PHOTO ON MOBILE */
+  .main-photo{
+    width: 200px;
+    height: 200px;
+    border: 4px solid #ffd700;
+  }
+  
+  /* BIGGER TEXT ON MOBILE */
+  .letter{
+    font-size: 24px;
+    padding: 25px 30px;
+    line-height: 1.8;
+  }
+  
+  /* BIGGER FLOATING PHOTOS ON MOBILE */
+  .floating-photo{
+    width: 80px;
+    height: 80px;
+    border: 3px solid #ffd700;
+  }
+}
+
+@media (max-width:480px){
+  .main-photo{
+    width: 180px;
+    height: 180px;
+  }
+  
+  .letter{
+    font-size: 22px;
+    padding: 20px 25px;
+  }
+  
+  .floating-photo{
+    width: 75px;
+    height: 75px;
+  }
 }
 
 /* Loading indicator */
@@ -458,7 +493,7 @@ body{
 <!-- ========= FINAL SCREEN ========= -->
 <div id="final">
   <div class="main-photo-container">
-    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/160?text=Jayani⭐'">
+    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/240?text=Jayani⭐'">
   </div>
   <div class="letter">
     <div>⭐ Dear Jayani Bangaram ⭐</div>
@@ -507,12 +542,10 @@ function playSong() {
     audio.loop = true;
     audio.volume = 0.5;
     
-    // Try to play
     audio.play().catch(error => {
       console.log("Auto-play failed, retrying...");
-      // Retry after 1 second
       setTimeout(() => {
-        audio.play().catch(e => console.log("Still can't play, user interaction needed"));
+        audio.play().catch(e => console.log("Still can't play"));
       }, 1000);
     });
   } catch(e) {
@@ -543,7 +576,7 @@ laterBtn.onclick = function(){
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-// CREATE FLOATING PHOTO
+// CREATE FLOATING PHOTO - BIGGER SIZE
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
@@ -555,11 +588,12 @@ function createFloatingPhoto() {
   photo.style.left = leftPos + "vw";
   photo.style.bottom = "-100px";
   
-  const size = Math.floor(Math.random() * 30) + 75;
+  // BIGGER SIZE: 85px to 115px
+  const size = Math.floor(Math.random() * 30) + 85;
   photo.style.width = size + "px";
   photo.style.height = size + "px";
   
-  const speed = Math.random() * 5 + 8;
+  const speed = Math.random() * 5 + 9;
   photo.style.animationDuration = speed + "s";
   
   document.body.appendChild(photo);
@@ -573,7 +607,6 @@ function createFloatingPhoto() {
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
   
-  // Launch 15 photos
   for(let i = 0; i < 15; i++) {
     setTimeout(createFloatingPhoto, i * 150);
   }
