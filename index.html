@@ -7,23 +7,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body{
-  margin:0;
-  height:100vh;
-  overflow:hidden;
+  min-height: 100vh;
   font-family:'Poppins',sans-serif;
   background: linear-gradient(145deg, #0a0504, #000000);
-  position:relative;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* ---------- MAIN CARD - ROYAL PURPLE & GOLD ---------- */
 #start{
-  height:100vh;
+  min-height: 100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   position:relative;
   z-index:100;
+  padding: 20px;
 }
 
 .dashboard-card{
@@ -33,7 +39,7 @@ body{
   border: 2px solid #ffd700;
   box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
   text-align: center;
-  width: 90%;
+  width: 100%;
   max-width: 650px;
   backdrop-filter: blur(8px);
   animation: glowPulse 2s ease-in-out infinite;
@@ -45,7 +51,6 @@ body{
   50% { box-shadow: 0 0 70px rgba(255, 215, 0, 0.5); border-color: #ffea80; }
 }
 
-/* Header Box */
 .ai-header {
   background: linear-gradient(135deg, #1a0f1a, #2a1a2a);
   border-radius: 20px;
@@ -70,7 +75,6 @@ body{
   letter-spacing: 2px;
 }
 
-/* Stats Cards */
 .stats-grid {
   display: flex;
   justify-content: center;
@@ -114,7 +118,6 @@ body{
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* Performance Section */
 .performance-section {
   background: rgba(42, 26, 42, 0.5);
   border-radius: 15px;
@@ -159,7 +162,6 @@ body{
   border-radius: 10px;
 }
 
-/* Mission Box */
 .mission-box {
   background: rgba(255, 215, 0, 0.08);
   border: 1px solid #ffd700;
@@ -218,7 +220,6 @@ body{
   margin-top: 8px;
 }
 
-/* Buttons */
 .btn-row {
   display: flex;
   justify-content: center;
@@ -239,14 +240,12 @@ body{
   letter-spacing: 2px;
 }
 
-/* START BUTTON - ZOOM IN/OUT */
 #start-btn {
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
   border: 2px solid #ffd700;
   box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
   animation: zoomGlow 1s ease-in-out infinite;
-  position: relative;
 }
 
 @keyframes zoomGlow {
@@ -275,12 +274,13 @@ body{
 /* ---------- FINAL SCREEN ---------- */
 #final{
   display:none;
-  height:100vh;
+  min-height: 100vh;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   position:relative;
   z-index:10;
+  padding: 20px;
 }
 
 .main-photo-container {
@@ -323,15 +323,15 @@ body{
 }
 
 .letter div {
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
-/* ---------- FLOATING PHOTOS - LARGER CIRCLE SIZE ---------- */
+/* ---------- FLOATING PHOTOS ---------- */
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width:85px;
-  height:85px;
+  width:80px;
+  height:80px;
   border-radius:50% !important;
   object-fit:cover;
   border:3px solid #ffd700;
@@ -339,8 +339,6 @@ body{
   animation:floatUp 9s linear forwards;
   z-index:1000;
   pointer-events:none;
-  will-change: transform;
-  background: rgba(0,0,0,0.3);
 }
 
 @keyframes floatUp{
@@ -365,11 +363,29 @@ body{
   .dashboard-btn{padding:10px 25px;font-size:15px;}
   .letter{font-size:22px;padding:20px 25px; line-height: 1.8;}
   .main-photo{width:130px;height:130px;}
-  .floating-photo{width:70px;height:70px;}
+  .floating-photo{width:65px;height:65px;}
+}
+
+/* Loading indicator */
+.loading-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: #ffd700;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  z-index: 2000;
+  border: 1px solid #ffd700;
+  display: none;
 }
 </style>
 </head>
 <body>
+
+<div class="loading-toast" id="loadingToast">✨ Loading your surprise... ✨</div>
 
 <!-- ========= SCREEN 1 - AI DASHBOARD ========= -->
 <div id="start">
@@ -439,19 +455,19 @@ body{
   </div>
 </div>
 
-<!-- ========= FINAL SCREEN - NO LOVE SYMBOLS, JUST STARS & TECH EMOJIS ========= -->
+<!-- ========= FINAL SCREEN ========= -->
 <div id="final">
   <div class="main-photo-container">
     <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/160?text=Jayani⭐'">
   </div>
   <div class="letter">
     <div>⭐ Dear Jayani Bangaram ⭐</div>
-    <div>🎂 Happy Birthday 🎈</div>
-    <div>🤖 Our future AI Engineer 🚀</div>
-    <div>💪 You are doing amazing ✨</div>
-    <div>📚 Keep learning and growing 🌱</div>
-    <div>🌟 Believe in yourself always 🌟</div>
-    <div>🚀 Big dreams are waiting for you 💫</div>
+    <div>🎂 Happy Birthday 🎉</div>
+    <div>🤖 Our future AI Engineer 👩‍🎓</div>
+    <div>🌟 You are doing amazing 🌟</div>
+    <div>💪 Keep learning and growing 💪</div>
+    <div>😊 Believe in yourself always ✨</div>
+    <div>🚀 Big dreams are waiting for you 🌟</div>
     <div>🏆 We are very proud of you ⭐</div>
     <div>🎉 Enjoy your special day 🎁</div>
     <div>✨ – Your Mama ✨</div>
@@ -459,7 +475,7 @@ body{
 </div>
 
 <script>
-// ALL 13 PHOTOS - COMPLETE LIST
+// ALL 13 PHOTOS
 const photoFiles = [
   "1.JPG", "2.JPG", "3.JPG", "4.jpeg", "5.jpg", "6.jpg", "7.jpg", 
   "8.JPG", "9.jpg", "10.JPG", "11.JPG", "12.jpg", "13.jpg"
@@ -467,10 +483,20 @@ const photoFiles = [
 
 const startBtn = document.getElementById("start-btn");
 const laterBtn = document.getElementById("later-btn");
+const loadingToast = document.getElementById("loadingToast");
 let photoInterval = null;
 let audio = null;
 
-// Function to play song immediately
+// Show loading message
+function showLoading() {
+  loadingToast.style.display = "block";
+  setTimeout(() => {
+    loadingToast.style.opacity = "0";
+    setTimeout(() => loadingToast.style.display = "none", 500);
+  }, 2000);
+}
+
+// Play song with retry
 function playSong() {
   try {
     if(audio) {
@@ -479,34 +505,32 @@ function playSong() {
     }
     audio = new Audio("unstoppable.mpeg");
     audio.loop = true;
-    audio.volume = 0.6;
+    audio.volume = 0.5;
     
-    // Play immediately
+    // Try to play
     audio.play().catch(error => {
-      console.log("Auto-play prevented, will play on click");
-      document.body.onclick = function() {
-        audio.play();
-        document.body.onclick = null;
-      };
+      console.log("Auto-play failed, retrying...");
+      // Retry after 1 second
+      setTimeout(() => {
+        audio.play().catch(e => console.log("Still can't play, user interaction needed"));
+      }, 1000);
     });
   } catch(e) {
     console.log("Audio error:", e);
   }
 }
 
-// START BUTTON - BEGIN CELEBRATION
+// START BUTTON
 startBtn.onclick = function(){
+  showLoading();
   document.getElementById("start").style.display = "none";
   document.getElementById("final").style.display = "flex";
   
-  // START FLOATING PHOTOS - IMMEDIATELY
   startFloatingPhotos();
-  
-  // PLAY SONG IMMEDIATELY
   playSong();
 };
 
-// LATER BUTTON - RUNAWAY
+// LATER BUTTON
 let msgIndex = 0;
 const messages = ["Nice try 😜", "Click START 🎉", "Celebrate! 🎂", "Don't wait! 🎈", "Press START ⭐"];
 
@@ -519,77 +543,49 @@ laterBtn.onclick = function(){
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-// CREATE FLOATING PHOTO - LARGER SIZE
+// CREATE FLOATING PHOTO
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
   
-  // Pick random photo from ALL 13
   const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
   photo.src = randomPhoto;
   
-  // Add timestamp to prevent caching issues
-  photo.src = randomPhoto + "?t=" + Date.now();
-  
-  // Error handling
-  photo.onerror = function() {
-    console.log("Failed to load:", randomPhoto);
-    if(photo.parentNode) photo.remove();
-  };
-  
-  // Random position (10% to 90%)
   const leftPos = 10 + Math.random() * 80;
   photo.style.left = leftPos + "vw";
   photo.style.bottom = "-100px";
   
-  // LARGER SIZE: 80px to 110px
-  const size = Math.floor(Math.random() * 30) + 80;
+  const size = Math.floor(Math.random() * 30) + 75;
   photo.style.width = size + "px";
   photo.style.height = size + "px";
   
-  // Random speed (8 to 13 seconds)
   const speed = Math.random() * 5 + 8;
   photo.style.animationDuration = speed + "s";
   
-  // Add to body
   document.body.appendChild(photo);
   
-  // Remove after animation
   setTimeout(() => {
     if(photo && photo.parentNode) photo.remove();
   }, speed * 1000 + 500);
 }
 
-// START FLOATING PHOTOS - ALL 13 WILL APPEAR
+// START FLOATING PHOTOS
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
   
-  // Launch 20 photos immediately to ensure all appear
-  for(let i = 0; i < 20; i++) {
+  // Launch 15 photos
+  for(let i = 0; i < 15; i++) {
     setTimeout(createFloatingPhoto, i * 150);
   }
   
-  // Continue launching new photos every 500ms for continuous flow
-  photoInterval = setInterval(createFloatingPhoto, 500);
+  photoInterval = setInterval(createFloatingPhoto, 550);
 }
 
-// Preload images to ensure they appear
-function preloadImages() {
-  photoFiles.forEach(file => {
-    const img = new Image();
-    img.src = file;
-  });
-}
-preloadImages();
-
-// Show preview floating photos before click
-setTimeout(() => {
-  if(document.getElementById("start").style.display !== "none") {
-    for(let i = 0; i < 6; i++) {
-      setTimeout(createFloatingPhoto, i * 400);
-    }
-  }
-}, 1000);
+// Preload images
+photoFiles.forEach(file => {
+  const img = new Image();
+  img.src = file;
+});
 </script>
 
 </body>
