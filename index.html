@@ -220,20 +220,30 @@ body{
 #final{
   display:none;
   min-height: 100vh;
-  position: relative;
   padding: 30px;
+  position: relative;
 }
 
-/* Main Center Content */
+/* Main Content Container */
+.final-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Center Content */
 .center-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
   text-align: center;
-  z-index: 20;
-  width: 90%;
-  max-width: 550px;
+  position: sticky;
+  top: 30px;
 }
 
 .main-photo{
@@ -264,22 +274,22 @@ body{
   border:1px solid #ffd700;
 }
 
-/* ========= WISHES ON RIGHT SIDE - TOP TO BOTTOM ========= */
-.wishes-right-side {
-  position: fixed;
-  right: 30px;
-  top: 30px;
-  bottom: 30px;
-  width: 320px;
+/* Wishes Section - Right Side on Desktop, Below on Mobile */
+.wishes-section {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
   background: rgba(26, 10, 26, 0.85);
   backdrop-filter: blur(12px);
   border-radius: 20px;
   border: 1px solid #ffd700;
   box-shadow: 0 0 40px rgba(0,0,0,0.5);
-  z-index: 30;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  max-height: 80vh;
+  position: sticky;
+  top: 30px;
 }
 
 .wishes-header {
@@ -310,20 +320,19 @@ body{
   gap: 10px;
 }
 
-/* Individual Wish - Flows from top to bottom */
-.wish-right-item {
+/* Individual Wish */
+.wish-item-final {
   background: linear-gradient(135deg, rgba(26, 10, 26, 0.9), rgba(42, 26, 42, 0.9));
   border-left: 3px solid #ffd700;
   border-radius: 12px;
   padding: 12px 15px;
-  animation: slideInRight 0.4s ease;
-  transition: all 0.2s;
+  animation: slideIn 0.3s ease;
 }
 
-@keyframes slideInRight {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
@@ -331,37 +340,31 @@ body{
   }
 }
 
-.wish-right-item:hover {
-  background: linear-gradient(135deg, rgba(42, 26, 42, 0.9), rgba(60, 40, 60, 0.9));
-  transform: translateX(-3px);
-}
-
-.wish-right-name {
+.wish-name-final {
   color: #ffd700;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   display: inline-block;
   background: rgba(0,0,0,0.5);
   padding: 3px 12px;
   border-radius: 20px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
-.wish-right-text {
+.wish-text-final {
   color: #ffefc0;
   font-size: 13px;
   line-height: 1.5;
   word-break: break-word;
 }
 
-.wish-right-time {
+.wish-time-final {
   color: #888;
-  font-size: 9px;
+  font-size: 10px;
   margin-top: 8px;
   text-align: right;
 }
 
-/* Empty state */
 .empty-wishes {
   text-align: center;
   color: #888;
@@ -391,39 +394,63 @@ body{
   }
 }
 
-/* Responsive */
+/* ========= RESPONSIVE - MOBILE FRIENDLY ========= */
 @media (max-width: 900px) {
-  .wishes-right-side {
-    width: 280px;
-    right: 15px;
-    top: 15px;
-    bottom: 15px;
-  }
-  .letter { font-size: 20px; padding: 20px; }
-  .main-photo { width: 150px; height: 150px; }
-}
-
-@media (max-width: 700px) {
-  .wishes-right-side {
-    position: relative;
-    width: 100%;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    margin-top: 20px;
-    max-height: 300px;
-  }
-  .center-content {
-    position: relative;
-    transform: none;
-    top: auto;
-    left: auto;
-    margin: 20px auto;
-  }
-  #final {
-    display: flex;
+  .final-container {
     flex-direction: column;
     align-items: center;
+    gap: 30px;
+  }
+  
+  .center-content {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  
+  .wishes-section {
+    position: relative;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+  }
+  
+  .letter {
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  .main-photo {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .wish-name-final {
+    font-size: 13px;
+  }
+  
+  .wish-text-final {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  #final {
+    padding: 20px;
+  }
+  
+  .letter {
+    font-size: 18px;
+    padding: 15px;
+  }
+  
+  .wishes-header h3 {
+    font-size: 16px;
+  }
+  
+  .wish-item-final {
+    padding: 10px 12px;
   }
 }
 </style>
@@ -479,35 +506,37 @@ body{
 
 <!-- ========= FINAL SCREEN ========= -->
 <div id="final">
-  
-  <!-- Wishes on Right Side - Top to Bottom -->
-  <div class="wishes-right-side">
-    <div class="wishes-header">
-      <h3>💬 WISHES WALL 💬</h3>
-      <p>From friends & family ❤️</p>
+  <div class="final-container">
+    
+    <!-- Center Content -->
+    <div class="center-content">
+      <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani⭐'">
+      <div class="letter">
+        <div>⭐ Dear Jayani Bangaram ⭐</div>
+        <div>🎂 Happy Birthday 🎉</div>
+        <div>🤖 Our future AI Engineer 👩‍🎓</div>
+        <div>🌟 You are doing amazing 🌟</div>
+        <div>💪 Keep learning and growing 💪</div>
+        <div>😊 Believe in yourself always ✨</div>
+        <div>🚀 Big dreams are waiting for you 🌟</div>
+        <div>🏆 We are very proud of you ⭐</div>
+        <div>🎉 Enjoy your special day 🎁</div>
+        <div>✨ – Your Mama ✨</div>
+      </div>
     </div>
-    <div class="wishes-container" id="finalWishesContainer">
-      <div class="empty-wishes">✨ Loading wishes... ✨</div>
+    
+    <!-- Wishes Section - Right Side on Desktop, Below on Mobile -->
+    <div class="wishes-section">
+      <div class="wishes-header">
+        <h3>💬 WISHES WALL 💬</h3>
+        <p>From friends & family ❤️</p>
+      </div>
+      <div class="wishes-container" id="finalWishesContainer">
+        <div class="empty-wishes">✨ Loading wishes... ✨</div>
+      </div>
     </div>
+    
   </div>
-  
-  <!-- Center Content -->
-  <div class="center-content">
-    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani⭐'">
-    <div class="letter">
-      <div>⭐ Dear Jayani Bangaram ⭐</div>
-      <div>🎂 Happy Birthday 🎉</div>
-      <div>🤖 Our future AI Engineer 👩‍🎓</div>
-      <div>🌟 You are doing amazing 🌟</div>
-      <div>💪 Keep learning and growing 💪</div>
-      <div>😊 Believe in yourself always ✨</div>
-      <div>🚀 Big dreams are waiting for you 🌟</div>
-      <div>🏆 We are very proud of you ⭐</div>
-      <div>🎉 Enjoy your special day 🎁</div>
-      <div>✨ – Your Mama ✨</div>
-    </div>
-  </div>
-  
 </div>
 
 <script>
@@ -564,21 +593,21 @@ function loadWishes() {
       `).join('');
     }
     
-    // Update Final Screen Right Side Wishes
+    // Update Final Screen Wishes
     const finalContainer = document.getElementById('finalWishesContainer');
     if (finalContainer) {
       if (wishes.length === 0) {
         finalContainer.innerHTML = '<div class="empty-wishes">✨ Be the first to wish Jayani! ✨</div>';
       } else {
         finalContainer.innerHTML = wishes.map(w => `
-          <div class="wish-right-item">
-            <div class="wish-right-name">⭐ ${escapeHtml(w.name)}</div>
-            <div class="wish-right-text">💝 ${escapeHtml(w.message)}</div>
-            <div class="wish-right-time">${new Date(w.time).toLocaleString()}</div>
+          <div class="wish-item-final">
+            <div class="wish-name-final">⭐ ${escapeHtml(w.name)}</div>
+            <div class="wish-text-final">💝 ${escapeHtml(w.message)}</div>
+            <div class="wish-time-final">${new Date(w.time).toLocaleString()}</div>
           </div>
         `).join('');
         
-        // Auto-scroll to top to show newest
+        // Auto-scroll to top
         finalContainer.scrollTop = 0;
       }
     }
