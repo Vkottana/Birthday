@@ -115,7 +115,7 @@ body{
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* Performance Section */
+/* Performance Section - UPDATED WITH FUNNY METRICS */
 .performance-section {
   background: rgba(42, 26, 42, 0.5);
   border-radius: 15px;
@@ -224,7 +224,7 @@ body{
   margin-top: 8px;
 }
 
-/* Buttons */
+/* Buttons - UPDATED WITH ZOOM IN/OUT EFFECT */
 .btn-row {
   display: flex;
   justify-content: center;
@@ -245,16 +245,59 @@ body{
   letter-spacing: 2px;
 }
 
+/* START BUTTON - ZOOM IN/OUT ANIMATION */
 #start-btn {
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
   border: 2px solid #ffd700;
   box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+  animation: zoomGlow 1s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes zoomGlow {
+  0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 20px rgba(139, 0, 0, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+}
+
+/* Sparkle effect on hover */
+#start-btn::before {
+  content: '✨';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#start-btn::after {
+  content: '🎉';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#start-btn:hover::before {
+  left: 10px;
+  opacity: 1;
+}
+
+#start-btn:hover::after {
+  right: 10px;
+  opacity: 1;
 }
 
 #start-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+  transform: scale(1.12);
+  box-shadow: 0 0 60px rgba(255, 215, 0, 1);
   background: linear-gradient(135deg, #a00000, #6b0000);
 }
 
@@ -388,12 +431,12 @@ body{
       </div>
     </div>
     
-    <!-- Performance Metrics -->
+    <!-- Performance Metrics - UPDATED WITH FUNNY METRICS -->
     <div class="performance-section">
       <div class="section-title">📊 PERFORMANCE METRICS:</div>
       <div class="metric">
         <div class="metric-label">
-          <span>INTELLIGENCE</span>
+          <span>🧠 INTELLIGENCE</span>
           <span>100%</span>
         </div>
         <div class="metric-bar">
@@ -402,7 +445,7 @@ body{
       </div>
       <div class="metric">
         <div class="metric-label">
-          <span>CREATIVITY</span>
+          <span>💡 CREATIVITY</span>
           <span>100%</span>
         </div>
         <div class="metric-bar">
@@ -411,7 +454,25 @@ body{
       </div>
       <div class="metric">
         <div class="metric-label">
-          <span>KINDNESS</span>
+          <span>🌙 MIDNIGHT CODING</span>
+          <span>100%</span>
+        </div>
+        <div class="metric-bar">
+          <div class="metric-fill" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">
+          <span>⏰ LAST MINUTE EXAM PREP</span>
+          <span>100%</span>
+        </div>
+        <div class="metric-bar">
+          <div class="metric-fill" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">
+          <span>🎓 SEMESTER SURVIVAL</span>
           <span>100%</span>
         </div>
         <div class="metric-bar">
