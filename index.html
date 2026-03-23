@@ -32,6 +32,8 @@ body{
   width:90%;
   max-width:600px;
   box-shadow:0 0 40px rgba(255,215,0,0.4);
+  position:relative;
+  z-index:10;
 }
 
 .title{
@@ -69,11 +71,18 @@ button{
   font-size:18px;
   cursor:pointer;
   margin:10px;
+  transition:0.3s;
 }
 
 #yes{
   background:gold;
   font-weight:bold;
+  color:#000;
+}
+
+#yes:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px gold;
 }
 
 #no{
@@ -81,13 +90,19 @@ button{
   color:white;
 }
 
-/* ---------- FINAL ---------- */
+#no:hover{
+  background:#444;
+}
+
+/* ---------- FINAL SCREEN ---------- */
 #final{
   display:none;
   height:100vh;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  position:relative;
+  z-index:10;
 }
 
 .photo{
@@ -96,6 +111,8 @@ button{
   border-radius:50%;
   border:3px solid gold;
   margin-bottom:20px;
+  object-fit:cover;
+  box-shadow:0 0 30px rgba(255,215,0,0.4);
 }
 
 .letter{
@@ -104,25 +121,47 @@ button{
   text-align:center;
   line-height:1.8;
   font-family:'Dancing Script', cursive;
+  background:rgba(0,0,0,0.7);
+  padding:25px 35px;
+  border-radius:20px;
+  border:1px solid gold;
+  max-width:500px;
+  width:90%;
+  margin:0 auto;
 }
 
-/* hearts */
-.heart{
+/* ---------- FLOATING PHOTOS IN CIRCLE (BOTTOM TO TOP) ---------- */
+.floating-photo{
   position:fixed;
-  bottom:-20px;
-  font-size:25px;
-  animation:float 5s linear forwards;
+  bottom:-100px;
+  width:70px;
+  height:70px;
+  border-radius:50% !important;
+  object-fit:cover;
+  border:2px solid gold;
+  box-shadow:0 0 20px rgba(255,215,0,0.5);
+  animation:floatUp 9s linear forwards;
+  z-index:1000;
+  pointer-events:none;
 }
 
-@keyframes float{
+@keyframes floatUp{
   to{
-    transform:translateY(-100vh);
+    transform:translateY(-120vh) rotate(360deg);
     opacity:0;
   }
 }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:600px){
+  .card{padding:25px;}
+  .title{font-size:28px;}
+  .letter{font-size:22px;padding:20px;}
+  .photo{width:150px;height:150px;}
+  .floating-photo{width:55px;height:55px;}
+}
 </style>
 </head>
-
 <body>
 
 <!-- SCREEN 1 -->
@@ -159,10 +198,10 @@ button{
   </div>
 </div>
 
-<!-- FINAL -->
+<!-- FINAL SCREEN -->
 <div id="final">
 
-  <img src="Bangaram.jpg" class="photo">
+  <img src="Bangaram.jpg" class="photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani❤️'">
 
   <div class="letter">
     Dear Jayani Bangaram 💖<br><br>
@@ -186,33 +225,98 @@ button{
 </div>
 
 <script>
+// Photo files (update with your actual photo names)
+const photoFiles = [
+  "1.JPG", "2.JPG", "3.JPG", "4.jpeg", "5.jpg", "6.jpg", "7.jpg", "9.jpg", "Bangaram.jpg"
+];
+
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
+let photoInterval = null;
 
+// YES BUTTON - START CELEBRATION
 yes.onclick = function(){
-  document.getElementById("start").style.display="none";
-  document.getElementById("final").style.display="flex";
-  startHearts();
+  document.getElementById("start").style.display = "none";
+  document.getElementById("final").style.display = "flex";
+  
+  // Start floating photos (circles from bottom to top)
+  startFloatingPhotos();
+  
+  // Play birthday song
+  try {
+    let audio = new Audio("kesariya.mp3");
+    audio.volume = 0.4;
+    audio.play().catch(e => console.log("Audio play failed"));
+  } catch(e) {}
 };
+
+// NO BUTTON - RUNAWAY
+let msgIndex = 0;
+const messages = ["Nice try 😜", "Click YES 🎉", "Celebrate! 🎂", "Don't wait! 🎈", "Press YES ❤️"];
 
 no.onclick = function(){
-  no.style.position="absolute";
-  no.style.top=Math.random()*80+"%";
-  no.style.left=Math.random()*80+"%";
+  no.style.position = "fixed";
+  no.style.top = Math.random() * 80 + "%";
+  no.style.left = Math.random() * 80 + "%";
+  no.innerText = messages[msgIndex++ % messages.length];
+  
+  // Shake effect
+  no.style.transform = "rotate(5deg)";
+  setTimeout(() => no.style.transform = "rotate(0deg)", 200);
 };
 
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
+// CREATE FLOATING PHOTO (CIRCLE SHAPE)
+function createFloatingPhoto() {
+  const photo = document.createElement("img");
+  photo.className = "floating-photo";
+  
+  // Pick random photo from the list
+  const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
+  photo.src = randomPhoto;
+  
+  // Random starting position
+  photo.style.left = Math.random() * 100 + "vw";
+  photo.style.bottom = "-100px";
+  
+  // Random size (50px to 90px)
+  const size = Math.floor(Math.random() * 40) + 50;
+  photo.style.width = size + "px";
+  photo.style.height = size + "px";
+  
+  // Random speed (7 to 12 seconds)
+  photo.style.animationDuration = (Math.random() * 5 + 7) + "s";
+  
+  // Circle shape (already in CSS)
+  photo.style.borderRadius = "50%";
+  
+  document.body.appendChild(photo);
+  
+  // Remove after animation
+  setTimeout(() => {
+    if(photo.parentNode) photo.remove();
+  }, 12000);
 }
 
-function startHearts(){
-  setInterval(createHeart,200);
+// START FLOATING PHOTOS
+function startFloatingPhotos() {
+  if(photoInterval) clearInterval(photoInterval);
+  
+  // Launch initial 10 photos
+  for(let i = 0; i < 10; i++) {
+    setTimeout(createFloatingPhoto, i * 150);
+  }
+  
+  // Continue launching photos every 600ms
+  photoInterval = setInterval(createFloatingPhoto, 600);
 }
+
+// Initial floating photos when page loads (optional)
+setTimeout(() => {
+  // Just to show some photos before click
+  for(let i = 0; i < 5; i++) {
+    setTimeout(createFloatingPhoto, i * 200);
+  }
+}, 1000);
 </script>
 
 </body>
