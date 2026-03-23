@@ -33,7 +33,7 @@ body{
   align-items:center;
   position:relative;
   z-index:100;
-  padding: 20px;
+  padding: 15px;
 }
 
 .dashboard-card{
@@ -526,8 +526,76 @@ body{
   }
 }
 
-/* Responsive */
+/* ========= RESPONSIVE - BIGGER FOR MOBILE (NO ZOOM NEEDED) ========= */
 @media (max-width: 900px) {
+  .dashboard-card {
+    padding: 20px;
+  }
+  
+  .ai-title {
+    font-size: 26px;
+  }
+  
+  .stat-card {
+    padding: 12px 18px;
+    min-width: 90px;
+  }
+  
+  .stat-icon {
+    font-size: 32px;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+  }
+  
+  .performance-section {
+    padding: 18px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+  }
+  
+  .metric-label {
+    font-size: 14px;
+  }
+  
+  .guestbook-title {
+    font-size: 24px;
+  }
+  
+  .latest-name {
+    font-size: 20px;
+  }
+  
+  .latest-text {
+    font-size: 18px;
+  }
+  
+  .latest-time {
+    font-size: 12px;
+  }
+  
+  .wish-input {
+    padding: 20px 26px;
+    font-size: 20px;
+  }
+  
+  .wish-input::placeholder {
+    font-size: 18px;
+  }
+  
+  .send-btn {
+    padding: 16px 24px;
+    font-size: 20px;
+  }
+  
+  .dashboard-btn {
+    padding: 18px 40px;
+    font-size: 22px;
+  }
+  
   .final-container {
     flex-direction: column;
     align-items: center;
@@ -549,87 +617,97 @@ body{
   }
   
   .letter {
-    font-size: 22px;
-    padding: 20px;
+    font-size: 24px;
+    padding: 22px;
   }
   
   .main-photo {
-    width: 170px;
-    height: 170px;
-  }
-  
-  .guestbook-title {
-    font-size: 20px;
-  }
-  
-  .latest-name {
-    font-size: 16px;
-  }
-  
-  .latest-text {
-    font-size: 14px;
-  }
-  
-  .wish-input {
-    padding: 16px 22px;
-    font-size: 16px;
-  }
-  
-  .send-btn {
-    padding: 12px 18px;
-    font-size: 17px;
-  }
-  
-  .dashboard-btn {
-    padding: 14px 32px;
-    font-size: 18px;
+    width: 180px;
+    height: 180px;
   }
 }
 
 @media (max-width: 600px) {
-  #final {
-    padding: 20px;
+  .dashboard-card {
+    padding: 18px;
+  }
+  
+  .ai-title {
+    font-size: 24px;
+  }
+  
+  .stats-grid {
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 10px 15px;
+    min-width: 80px;
+  }
+  
+  .stat-icon {
+    font-size: 28px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .performance-section {
+    padding: 15px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+  }
+  
+  .metric-label {
+    font-size: 13px;
+  }
+  
+  .guestbook-title {
+    font-size: 22px;
+  }
+  
+  .latest-name {
+    font-size: 18px;
+  }
+  
+  .latest-text {
+    font-size: 16px;
+  }
+  
+  .wish-input {
+    padding: 18px 24px;
+    font-size: 18px;
+  }
+  
+  .wish-input::placeholder {
+    font-size: 16px;
+  }
+  
+  .send-btn {
+    padding: 14px 22px;
+    font-size: 18px;
+  }
+  
+  .dashboard-btn {
+    padding: 16px 35px;
+    font-size: 20px;
   }
   
   .letter {
-    font-size: 20px;
+    font-size: 22px;
     padding: 18px;
+  }
+  
+  .main-photo {
+    width: 160px;
+    height: 160px;
   }
   
   .wishes-wall {
     max-height: 400px;
-  }
-  
-  .guestbook-title {
-    font-size: 18px;
-  }
-  
-  .latest-name {
-    font-size: 14px;
-  }
-  
-  .latest-text {
-    font-size: 13px;
-  }
-  
-  .wish-input {
-    padding: 14px 20px;
-    font-size: 15px;
-  }
-  
-  .send-btn {
-    padding: 11px 16px;
-    font-size: 16px;
-  }
-  
-  .dashboard-btn {
-    padding: 12px 28px;
-    font-size: 17px;
-  }
-  
-  .main-photo {
-    width: 150px;
-    height: 150px;
   }
 }
 </style>
@@ -881,7 +959,6 @@ function startFloatingPhotos() {
   photoInterval = setInterval(createFloatingPhoto, 550);
 }
 
-// FIXED: Lower volume song - no high pitch
 function playSong() {
   try {
     if(audio) {
@@ -890,8 +967,8 @@ function playSong() {
     }
     audio = new Audio("unstoppable.mpeg");
     audio.loop = true;
-    audio.volume = 0.25;  // Lower volume (was 0.5)
-    audio.playbackRate = 1.0; // Normal speed, no pitch change
+    audio.volume = 0.25;
+    audio.playbackRate = 1.0;
     audio.play().catch(e => console.log("Click anywhere to play"));
   } catch(e) { console.log("Audio error:", e); }
 }
