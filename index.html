@@ -2,140 +2,110 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Jayani 🎂</title>
+<title>Happy Birthday Jayani Bangaram 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  overflow:hidden;
-  background:black;
-  color:gold;
-  font-family:Arial;
-  text-align:center;
-}
+/* KEEP YOUR FULL ORIGINAL CSS — ONLY CHANGE BELOW PART */
 
-/* text */
-.center-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:10;
-  line-height:1.8;
-}
-
-/* floating circular photos */
-.photo{
+.floating-photo-circle{
   position:fixed;
   bottom:-100px;
   width:70px;
   height:70px;
   border-radius:50%;
   object-fit:cover;
-  border:3px solid gold;
-  animation:floatCircle linear forwards;
+  border:3px solid #ffd700;
+  box-shadow:0 0 25px rgba(255,215,0,0.6);
+  animation:floatPhotoCircle 8s linear forwards;
+  z-index:1000;
+  pointer-events:none;
 }
 
-/* animation */
-@keyframes floatCircle{
+/* FIXED ANIMATION */
+@keyframes floatPhotoCircle{
   0%{
     transform:translateY(0) rotate(0deg) scale(1);
     opacity:1;
   }
   50%{
-    transform:translateY(-50vh) rotate(180deg) scale(1.1);
+    transform:translateY(-60vh) rotate(180deg) scale(1.1);
   }
   100%{
-    transform:translateY(-120vh) rotate(360deg) scale(1);
+    transform:translateY(-130vh) rotate(360deg) scale(1);
     opacity:0;
   }
-}
-
-/* button */
-button{
-  padding:15px 30px;
-  border:none;
-  border-radius:30px;
-  font-size:18px;
-  cursor:pointer;
-  margin:10px;
-}
-
-#start{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
 }
 </style>
 </head>
 
 <body>
 
-<div id="start">
-  <h1>🎂 Happy Birthday Jayani Bangaram 🎂</h1>
-  <button onclick="start()">START 🎉</button>
-</div>
-
-<div class="center-text" id="msg" style="display:none;">
-  <h2>Dear Jayani Bangaram 💖</h2>
-  <p>Our future AI Engineer 👩‍💻🤖</p>
-  <p>Keep learning and growing 🚀</p>
-  <p>We are proud of you ❤️</p>
-</div>
+<!-- KEEP YOUR FULL ORIGINAL HTML SAME (NO CHANGE) -->
 
 <script>
+/* ---------- KEEP YOUR ORIGINAL VARIABLES ---------- */
+let audio = null;
+let photoInterval = null;
 
-const images = [
+/* ---------- YES BUTTON FIX ---------- */
+yesBtn.onclick = function() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("final").style.display = "flex";
+  document.getElementById("loveMeter").style.display = "flex";
+  document.getElementById("memories").style.display = "block";
+  
+  audio = new Audio("kesariya.mp3");
+  audio.loop = true;
+  audio.volume = 0.5;
+
+  audio.play().catch(() => {
+    document.body.addEventListener("click", () => {
+      audio.play();
+    }, { once: true });
+  });
+
+  // ❌ REMOVED HEARTS (important)
+  // startPinkHearts();
+
+  startFloatingCirclePhotos();
+  increaseLoveMeter();
+  populateReasons();
+};
+
+/* ---------- UPDATED IMAGE LIST ---------- */
+const photoFiles = [
   "1.JPG","2.JPG","3.JPG","4.jpeg","5.jpg","6.jpg","7.jpg","9.jpg"
 ];
 
-let audio;
+/* ---------- FIXED FLOATING PHOTOS ---------- */
+function createFloatingCirclePhoto() {
+  const photo = document.createElement("img");
+  photo.className = "floating-photo-circle";
+  
+  photo.src = photoFiles[Math.floor(Math.random() * photoFiles.length)];
+  photo.style.left = Math.random() * 100 + "vw";
+  
+  const size = Math.floor(Math.random() * 30) + 60;
+  photo.style.width = size + "px";
+  photo.style.height = size + "px";
 
-// start
-function start(){
-  document.getElementById("start").style.display="none";
-  document.getElementById("msg").style.display="block";
+  photo.style.animationDuration = (Math.random() * 3 + 6) + "s";
 
-  playMusic();
-  startPhotos();
+  document.body.appendChild(photo);
+  setTimeout(() => photo.remove(), 10000);
 }
 
-// music fix
-function playMusic(){
-  audio = new Audio("kesariya.mp3");
-  audio.loop = true;
+function startFloatingCirclePhotos() {
+  if(photoInterval) clearInterval(photoInterval);
 
-  audio.play().catch(()=>{
-    document.body.addEventListener("click", ()=>{
-      audio.play();
-    }, {once:true});
-  });
-}
-
-// photo animation
-function createPhoto(){
-  const img = document.createElement("img");
-  img.className = "photo";
-
-  img.src = images[Math.floor(Math.random()*images.length)];
-  img.style.left = Math.random()*100 + "vw";
-
-  img.style.animationDuration = (Math.random()*5 + 6) + "s";
-
-  document.body.appendChild(img);
-
-  setTimeout(()=>img.remove(),10000);
-}
-
-function startPhotos(){
   for(let i=0;i<20;i++){
-    setTimeout(createPhoto, i*200);
+    setTimeout(createFloatingCirclePhoto, i*150);
   }
-  setInterval(createPhoto,400);
-}
 
+  photoInterval = setInterval(createFloatingCirclePhoto, 400);
+}
 </script>
 
 </body>
