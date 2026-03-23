@@ -115,7 +115,7 @@ body{
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* Performance Section - UPDATED WITH FUNNY METRICS */
+/* Performance Section */
 .performance-section {
   background: rgba(42, 26, 42, 0.5);
   border-radius: 15px;
@@ -156,13 +156,8 @@ body{
 .metric-fill {
   height: 100%;
   background: linear-gradient(90deg, #ffd700, #ffea80);
-  width: 0%;
+  width: 100%;
   border-radius: 10px;
-  animation: fillBar 1.5s ease-out forwards;
-}
-
-@keyframes fillBar {
-  to { width: 100%; }
 }
 
 /* Mission Box */
@@ -224,7 +219,7 @@ body{
   margin-top: 8px;
 }
 
-/* Buttons - UPDATED WITH ZOOM IN/OUT EFFECT */
+/* Buttons */
 .btn-row {
   display: flex;
   justify-content: center;
@@ -262,29 +257,6 @@ body{
   100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
 }
 
-/* Sparkle effect on hover */
-#start-btn::before {
-  content: '✨';
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-#start-btn::after {
-  content: '🎉';
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  opacity: 0;
-  transition: 0.3s;
-}
-
 #start-btn:hover::before {
   left: 10px;
   opacity: 1;
@@ -298,7 +270,6 @@ body{
 #start-btn:hover {
   transform: scale(1.12);
   box-shadow: 0 0 60px rgba(255, 215, 0, 1);
-  background: linear-gradient(135deg, #a00000, #6b0000);
 }
 
 #later-btn {
@@ -331,8 +302,8 @@ body{
 }
 
 .main-photo{
-  width:180px;
-  height:180px;
+  width:160px;
+  height:160px;
   border-radius:50%;
   border:3px solid #ffd700;
   object-fit:cover;
@@ -347,12 +318,12 @@ body{
 
 .letter{
   color: #ffd700;
-  font-size:26px;
+  font-size: 24px;
   text-align:center;
-  line-height:1.8;
+  line-height:1.6;
   font-family:'Dancing Script', cursive;
   background:rgba(0,0,0,0.8);
-  padding:25px 35px;
+  padding:20px 30px;
   border-radius:20px;
   border:1px solid #ffd700;
   max-width:500px;
@@ -363,12 +334,12 @@ body{
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
-/* ---------- FLOATING PHOTOS (1.JPG to 9.jpg) ---------- */
+/* ---------- FLOATING PHOTOS ---------- */
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width:70px;
-  height:70px;
+  width:60px;
+  height:60px;
   border-radius:50% !important;
   object-fit:cover;
   border:2px solid #ffd700;
@@ -390,29 +361,27 @@ body{
   .dashboard-card{padding:20px;}
   .ai-title{font-size:24px;}
   .stat-card{padding:10px 15px;}
-  .stat-value{font-size:22px;}
-  .metric-label{font-size:12px;}
-  .mission-text{font-size:14px;}
-  .dashboard-btn{padding:12px 25px;font-size:16px;}
-  .letter{font-size:22px;padding:20px;}
-  .main-photo{width:150px;height:150px;}
-  .floating-photo{width:55px;height:55px;}
+  .stat-value{font-size:20px;}
+  .metric-label{font-size:11px;}
+  .mission-text{font-size:13px;}
+  .dashboard-btn{padding:10px 25px;font-size:15px;}
+  .letter{font-size:20px;padding:18px 25px;}
+  .main-photo{width:130px;height:130px;}
+  .floating-photo{width:50px;height:50px;}
 }
 </style>
 </head>
 <body>
 
-<!-- ========= SCREEN 1 - AI DASHBOARD (PURPLE & GOLD) ========= -->
+<!-- ========= SCREEN 1 - AI DASHBOARD ========= -->
 <div id="start">
   <div class="dashboard-card">
     
-    <!-- Header -->
     <div class="ai-header">
       <div class="ai-title">🤖 JAYANI AI 🤖</div>
       <div class="ai-version">Version: Birthday_2.0 🎂</div>
     </div>
     
-    <!-- Stats Cards -->
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-icon">🧠</span>
@@ -431,69 +400,39 @@ body{
       </div>
     </div>
     
-    <!-- Performance Metrics - UPDATED WITH FUNNY METRICS -->
     <div class="performance-section">
       <div class="section-title">📊 PERFORMANCE METRICS:</div>
       <div class="metric">
-        <div class="metric-label">
-          <span>🧠 INTELLIGENCE</span>
-          <span>100%</span>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-fill" style="width:100%"></div>
-        </div>
+        <div class="metric-label"><span>🧠 INTELLIGENCE</span><span>100%</span></div>
+        <div class="metric-bar"><div class="metric-fill"></div></div>
       </div>
       <div class="metric">
-        <div class="metric-label">
-          <span>💡 CREATIVITY</span>
-          <span>100%</span>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-fill" style="width:100%"></div>
-        </div>
+        <div class="metric-label"><span>💡 CREATIVITY</span><span>100%</span></div>
+        <div class="metric-bar"><div class="metric-fill"></div></div>
       </div>
       <div class="metric">
-        <div class="metric-label">
-          <span>🌙 MIDNIGHT CODING</span>
-          <span>100%</span>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-fill" style="width:100%"></div>
-        </div>
+        <div class="metric-label"><span>🌙 MIDNIGHT CODING</span><span>100%</span></div>
+        <div class="metric-bar"><div class="metric-fill"></div></div>
       </div>
       <div class="metric">
-        <div class="metric-label">
-          <span>⏰ LAST MINUTE EXAM PREP</span>
-          <span>100%</span>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-fill" style="width:100%"></div>
-        </div>
+        <div class="metric-label"><span>⏰ LAST MINUTE EXAM PREP</span><span>100%</span></div>
+        <div class="metric-bar"><div class="metric-fill"></div></div>
       </div>
       <div class="metric">
-        <div class="metric-label">
-          <span>🎓 SEMESTER SURVIVAL</span>
-          <span>100%</span>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-fill" style="width:100%"></div>
-        </div>
+        <div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div>
+        <div class="metric-bar"><div class="metric-fill"></div></div>
       </div>
     </div>
     
-    <!-- Birthday Mission -->
     <div class="mission-box">
       <div class="mission-title">🎯 BIRTHDAY MISSION:</div>
       <div class="mission-text">"Celebrate the amazing Jayani Bangaram"</div>
       <div class="mission-status">
-        <div class="status-bar">
-          <div class="status-fill"></div>
-        </div>
+        <div class="status-bar"><div class="status-fill"></div></div>
         <div class="remaining-text">Status: 99% Complete • Remaining: Click START 🎉</div>
       </div>
     </div>
     
-    <!-- Buttons -->
     <div class="btn-row">
       <button class="dashboard-btn" id="start-btn">🎉 START CELEBRATION 🎉</button>
       <button class="dashboard-btn" id="later-btn">⏰ LATER</button>
@@ -504,49 +443,59 @@ body{
 
 <!-- ========= FINAL SCREEN ========= -->
 <div id="final">
-
   <div class="main-photo-container">
-    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani❤️'">
+    <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/160?text=Jayani❤️'">
   </div>
-
   <div class="letter">
     Dear Jayani Bangaram 💖<br><br>
-
     Happy Birthday 🎂🎉<br><br>
-
     Our future AI Engineer 👩‍💻🤖<br>
     You are doing amazing 🎓<br><br>
-
     Keep learning and growing 🚀<br>
     Believe in yourself always 💪<br><br>
-
     Big dreams are waiting for you 🌟<br>
     We are very proud of you ❤️<br><br>
-
     Enjoy your special day 🎁<br><br>
-
     – Your Mama 💖
   </div>
-
 </div>
 
 <script>
-// ONLY 8 PHOTOS (1.JPG to 13.jpg) - Bangaram.jpg stays in center
+// ALL 13 PHOTOS - Updated list
 const photoFiles = [
-  "1.JPG", "2.JPG", "3.JPG", "4.jpeg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg"
+  "1.JPG", "2.JPG", "3.JPG", "4.jpeg", "5.jpg", "6.jpg", "7.jpg", 
+  "8.JPG", "9.jpg", "10.JPG", "11.JPG", "12.jpg", "13.jpg"
 ];
 
 const startBtn = document.getElementById("start-btn");
 const laterBtn = document.getElementById("later-btn");
 let photoInterval = null;
 let audio = null;
+let loadingComplete = false;
 
-// START BUTTON - BEGIN CELEBRATION
+// Preload images in background (faster loading)
+let loadedCount = 0;
+const totalImages = photoFiles.length;
+
+function preloadImages() {
+  photoFiles.forEach(file => {
+    const img = new Image();
+    img.onload = () => {
+      loadedCount++;
+      if(loadedCount === totalImages) {
+        loadingComplete = true;
+      }
+    };
+    img.src = file;
+  });
+}
+preloadImages();
+
+// START BUTTON
 startBtn.onclick = function(){
   document.getElementById("start").style.display = "none";
   document.getElementById("final").style.display = "flex";
   
-  // Start floating photos
   startFloatingPhotos();
   
   // Play song
@@ -557,12 +506,11 @@ startBtn.onclick = function(){
     }
     audio = new Audio("kesariya.mp3");
     audio.loop = true;
-    audio.volume = 0.5;
+    audio.volume = 0.4;
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
       playPromise.catch(error => {
-        console.log("Auto-play prevented");
         document.body.onclick = function() {
           audio.play();
           document.body.onclick = null;
@@ -583,37 +531,30 @@ laterBtn.onclick = function(){
   laterBtn.style.top = Math.random() * 80 + "%";
   laterBtn.style.left = Math.random() * 80 + "%";
   laterBtn.innerText = messages[msgIndex++ % messages.length];
-  
-  // Shake effect
   laterBtn.style.transform = "rotate(5deg)";
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-// CREATE FLOATING PHOTO (CIRCLE SHAPE)
+// CREATE FLOATING PHOTO
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
   
-  // Pick random photo
   const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
   photo.src = randomPhoto;
   
   photo.onerror = function() {
-    console.log("Image not found:", randomPhoto);
     if(photo.parentNode) photo.remove();
   };
   
-  // Inner position (15% to 85%)
-  const leftPos = 15 + Math.random() * 70;
+  // Inner position (10% to 90%)
+  const leftPos = 10 + Math.random() * 80;
   photo.style.left = leftPos + "vw";
   photo.style.bottom = "-100px";
   
-  // Random size (55px to 90px)
-  const size = Math.floor(Math.random() * 35) + 55;
+  const size = Math.floor(Math.random() * 30) + 50;
   photo.style.width = size + "px";
   photo.style.height = size + "px";
-  
-  // Random speed (8 to 13 seconds)
   photo.style.animationDuration = (Math.random() * 5 + 8) + "s";
   
   document.body.appendChild(photo);
@@ -623,34 +564,18 @@ function createFloatingPhoto() {
   }, 13000);
 }
 
-// START FLOATING PHOTOS
+// START FLOATING PHOTOS - Slower for better performance
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
   
-  // Launch initial 15 photos
-  for(let i = 0; i < 15; i++) {
-    setTimeout(createFloatingPhoto, i * 180);
+  // Launch initial 10 photos slowly
+  for(let i = 0; i < 10; i++) {
+    setTimeout(createFloatingPhoto, i * 200);
   }
   
-  // Continue every 500ms
-  photoInterval = setInterval(createFloatingPhoto, 500);
+  // Continue every 800ms (slower = better performance)
+  photoInterval = setInterval(createFloatingPhoto, 800);
 }
-
-// Preload images
-function preloadImages() {
-  photoFiles.forEach(file => {
-    const img = new Image();
-    img.src = file;
-  });
-}
-preloadImages();
-
-// Small initial floating photos before click (optional)
-setTimeout(() => {
-  for(let i = 0; i < 5; i++) {
-    setTimeout(createFloatingPhoto, i * 250);
-  }
-}, 800);
 </script>
 
 </body>
