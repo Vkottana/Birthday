@@ -105,7 +105,7 @@ body{
 .metric-bar { width: 100%; height: 6px; background: #1a1a1a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffea80); width: 100%; }
 
-/* ========= GUESTBOOK SECTION - BLACK BACKGROUND ========= */
+/* ========= GUESTBOOK SECTION - ONLY FORM (NO WISHES LIST) ========= */
 .guestbook-section {
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid #ffd700;
@@ -130,42 +130,12 @@ body{
   font-size: 28px;
 }
 
-/* Wishes List */
-.wishes-list {
-  max-height: 200px;
-  overflow-y: auto;
-  margin-bottom: 20px;
-  padding: 8px;
-  background: rgba(0,0,0,0.5);
-  border-radius: 20px;
-}
-
-.wish-item {
-  background: rgba(0,0,0,0.7);
-  border-left: 4px solid #ffd700;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.wish-name { 
-  color: #ffd700; 
-  font-weight: bold; 
-  font-size: 14px;
-}
-.wish-text { 
-  color: #ffefc0; 
-  font-size: 13px; 
-  margin-top: 4px;
-}
-
 /* BIG FORM FIELDS WITH ZOOM ANIMATION */
 .wish-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .wish-input {
@@ -494,7 +464,7 @@ body{
   }
 }
 
-/* Responsive - BIGGER ON MOBILE */
+/* Responsive */
 @media (max-width: 900px) {
   .final-container {
     flex-direction: column;
@@ -619,14 +589,10 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <!-- ========= GUESTBOOK SECTION - BLACK BACKGROUND ========= -->
+    <!-- ========= GUESTBOOK SECTION - ONLY FORM (NO WISHES LIST) ========= -->
     <div class="guestbook-section">
       <div class="guestbook-title">
-        <span>💬</span> WISHES FOR JAYANI <span>💬</span>
-      </div>
-      
-      <div class="wishes-list" id="wishesList">
-        <div style="text-align: center; color: #888; padding: 20px;">✨ Loading wishes... ✨</div>
+        <span>💬</span> LEAVE YOUR WISH <span>💬</span>
       </div>
       
       <div class="wish-form">
@@ -727,23 +693,7 @@ function loadWishes() {
     });
     wishes.reverse(); // Newest on top
     
-    // Update First Page Wishes
-    const wishesList = document.getElementById('wishesList');
-    if (wishes.length === 0) {
-      wishesList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px;">✨ Be the first to wish! ✨</div>';
-    } else {
-      wishesList.innerHTML = wishes.map(w => `
-        <div class="wish-item">
-          <div class="wish-name">⭐ ${escapeHtml(w.name)}</div>
-          <div class="wish-text">💝 ${escapeHtml(w.message)}</div>
-        </div>
-      `).join('');
-      
-      // Scroll to bottom to show latest wish
-      wishesList.scrollTop = wishesList.scrollHeight;
-    }
-    
-    // Update Final Screen Wishes
+    // Update Final Screen Wishes Wall
     const finalContainer = document.getElementById('finalWishesContainer');
     if (finalContainer) {
       if (wishes.length === 0) {
