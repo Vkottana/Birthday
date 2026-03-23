@@ -659,7 +659,7 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <!-- ========= GUESTBOOK SECTION - ONLY LATEST WISH (1 MESSAGE) ========= -->
+    <!-- ========= GUESTBOOK SECTION ========= -->
     <div class="guestbook-section">
       <div class="guestbook-title">
         <span>💬</span> LATEST WISH <span>💬</span>
@@ -775,7 +775,7 @@ function loadWishes() {
     
     // Update FIRST PAGE - Show ONLY THE LATEST WISH (1 message)
     const latestContainer = document.getElementById('latestWishContainer');
-    const latestWish = wishes.length > 0 ? wishes[0] : null; // Only the most recent
+    const latestWish = wishes.length > 0 ? wishes[0] : null;
     
     if (!latestWish) {
       latestContainer.innerHTML = `
@@ -812,7 +812,6 @@ function loadWishes() {
           </div>
         `).join('');
         
-        // Scroll to bottom to show latest wish
         finalContainer.scrollTop = finalContainer.scrollHeight;
       }
     }
@@ -833,7 +832,6 @@ function sendWish() {
     return;
   }
   
-  // Check for duplicate name (case insensitive)
   if (existingNames.has(name.toLowerCase())) {
     alert(`😊 ${name}, you have already wished! Thank you for your love! 💖`);
     return;
@@ -883,12 +881,17 @@ function startFloatingPhotos() {
   photoInterval = setInterval(createFloatingPhoto, 550);
 }
 
+// FIXED: Lower volume song - no high pitch
 function playSong() {
   try {
-    if(audio) { audio.pause(); audio.currentTime = 0; }
+    if(audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
     audio = new Audio("unstoppable.mpeg");
     audio.loop = true;
-    audio.volume = 0.5;
+    audio.volume = 0.25;  // Lower volume (was 0.5)
+    audio.playbackRate = 1.0; // Normal speed, no pitch change
     audio.play().catch(e => console.log("Click anywhere to play"));
   } catch(e) { console.log("Audio error:", e); }
 }
