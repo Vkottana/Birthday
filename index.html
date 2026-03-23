@@ -20,7 +20,7 @@
 body{
   min-height: 100vh;
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(145deg, #0a0504, #000000);
+  background: #000000;
   position: relative;
   overflow-x: hidden;
 }
@@ -37,19 +37,19 @@ body{
 }
 
 .dashboard-card{
-  background: rgba(26, 10, 26, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   padding: 25px;
   border-radius: 25px;
   border: 2px solid #ffd700;
   box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
   text-align: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
   backdrop-filter: blur(8px);
 }
 
 .ai-header {
-  background: linear-gradient(135deg, #1a0f1a, #2a1a2a);
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   padding: 15px;
   margin-bottom: 20px;
@@ -79,7 +79,7 @@ body{
 }
 
 .stat-card {
-  background: rgba(42, 26, 42, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   border: 1px solid #ffd700;
   border-radius: 15px;
   padding: 10px 15px;
@@ -92,7 +92,7 @@ body{
 .stat-value { color: #ffd700; font-size: 22px; font-weight: bold; }
 
 .performance-section {
-  background: rgba(42, 26, 42, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 15px;
   margin: 15px 0;
@@ -108,12 +108,12 @@ body{
 
 .metric { margin: 8px 0; }
 .metric-label { display: flex; justify-content: space-between; color: #e0c080; font-size: 12px; }
-.metric-bar { width: 100%; height: 6px; background: #2a1a2a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
+.metric-bar { width: 100%; height: 6px; background: #1a1a1a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffea80); width: 100%; }
 
-/* ========= GUESTBOOK SECTION - BIG & CLEAN (NO ZOOM) ========= */
+/* ========= GUESTBOOK SECTION - BLACK BACKGROUND ========= */
 .guestbook-section {
-  background: rgba(255, 215, 0, 0.08);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid #ffd700;
   border-radius: 25px;
   padding: 20px;
@@ -142,12 +142,12 @@ body{
   overflow-y: auto;
   margin-bottom: 20px;
   padding: 8px;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.5);
   border-radius: 20px;
 }
 
 .wish-item {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   border-left: 4px solid #ffd700;
   padding: 10px 15px;
   margin-bottom: 10px;
@@ -166,7 +166,7 @@ body{
   margin-top: 4px;
 }
 
-/* BIG FORM FIELDS - NO ZOOM */
+/* BIG FORM FIELDS WITH ZOOM ANIMATION */
 .wish-form {
   display: flex;
   flex-direction: column;
@@ -175,29 +175,37 @@ body{
 }
 
 .wish-input {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
   border: 2px solid #ffd700;
   border-radius: 50px;
-  padding: 16px 22px;
+  padding: 18px 24px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Poppins', sans-serif;
   transition: all 0.3s;
+  animation: zoomPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes zoomPulse {
+  0% { transform: scale(1); border-color: #ffd700; }
+  50% { transform: scale(1.02); border-color: #ffea80; box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+  100% { transform: scale(1); border-color: #ffd700; }
 }
 
 .wish-input::placeholder {
   color: #aaa;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .wish-input:focus {
   outline: none;
   border-color: #ffea80;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  animation: none;
 }
 
-/* BIG SEND BUTTON */
+/* SEND BUTTON - NO ZOOM */
 .send-btn {
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
@@ -217,7 +225,7 @@ body{
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-/* BIG START BUTTON - NO ZOOM */
+/* BIG START BUTTON WITH ZOOM */
 .btn-row {
   display: flex;
   justify-content: center;
@@ -226,8 +234,8 @@ body{
 }
 
 .dashboard-btn {
-  padding: 14px 32px;
-  font-size: 18px;
+  padding: 16px 36px;
+  font-size: 20px;
   font-weight: bold;
   border: none;
   border-radius: 50px;
@@ -240,22 +248,29 @@ body{
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
   border: 2px solid #ffd700;
+  animation: btnZoomPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes btnZoomPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
 }
 
 #start-btn:hover {
-  transform: scale(1.03);
+  transform: scale(1.08);
   background: linear-gradient(135deg, #a00000, #6b0000);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 #later-btn {
-  background: #2a1a2a;
+  background: #1a1a1a;
   color: #e0c080;
   border: 1px solid #ffd700;
 }
 
 #later-btn:hover {
-  background: #3a2a3a;
+  background: #2a2a2a;
   transform: scale(1.02);
 }
 
@@ -288,8 +303,8 @@ body{
 }
 
 .main-photo{
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius:50%;
   border: 4px solid #ffd700;
   object-fit:cover;
@@ -305,7 +320,7 @@ body{
 
 .letter{
   color: #ffd700;
-  font-size: 24px;
+  font-size: 26px;
   text-align:center;
   line-height: 1.7;
   font-family:'Dancing Script', cursive;
@@ -467,8 +482,8 @@ body{
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   border-radius:50% !important;
   object-fit:cover;
   border: 3px solid #ffd700;
@@ -485,7 +500,7 @@ body{
   }
 }
 
-/* Responsive */
+/* Responsive - BIGGER ON MOBILE */
 @media (max-width: 900px) {
   .final-container {
     flex-direction: column;
@@ -508,13 +523,51 @@ body{
   }
   
   .letter {
-    font-size: 20px;
+    font-size: 22px;
     padding: 20px;
   }
   
   .main-photo {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
+  }
+  
+  .guestbook-title {
+    font-size: 20px;
+  }
+  
+  .wish-input {
+    padding: 16px 22px;
+    font-size: 16px;
+  }
+  
+  .wish-input::placeholder {
+    font-size: 15px;
+  }
+  
+  .send-btn {
+    padding: 12px 18px;
+    font-size: 17px;
+  }
+  
+  .dashboard-btn {
+    padding: 14px 32px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  #final {
+    padding: 20px;
+  }
+  
+  .letter {
+    font-size: 20px;
+    padding: 18px;
+  }
+  
+  .wishes-wall {
+    max-height: 400px;
   }
   
   .guestbook-title {
@@ -526,48 +579,23 @@ body{
     font-size: 15px;
   }
   
+  .wish-input::placeholder {
+    font-size: 14px;
+  }
+  
   .send-btn {
-    padding: 12px 18px;
+    padding: 11px 16px;
     font-size: 16px;
   }
   
   .dashboard-btn {
     padding: 12px 28px;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 600px) {
-  #final {
-    padding: 20px;
+    font-size: 17px;
   }
   
-  .letter {
-    font-size: 18px;
-    padding: 15px;
-  }
-  
-  .wishes-wall {
-    max-height: 400px;
-  }
-  
-  .guestbook-title {
-    font-size: 16px;
-  }
-  
-  .wish-input {
-    padding: 12px 18px;
-    font-size: 14px;
-  }
-  
-  .send-btn {
-    padding: 10px 16px;
-    font-size: 15px;
-  }
-  
-  .dashboard-btn {
-    padding: 10px 24px;
-    font-size: 15px;
+  .main-photo {
+    width: 150px;
+    height: 150px;
   }
 }
 </style>
@@ -598,7 +626,7 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <!-- ========= GUESTBOOK SECTION - BIG & CLEAN ========= -->
+    <!-- ========= GUESTBOOK SECTION - BLACK BACKGROUND ========= -->
     <div class="guestbook-section">
       <div class="guestbook-title">
         <span>💬</span> WISHES FOR JAYANI <span>💬</span>
@@ -686,11 +714,17 @@ const photoFiles = [
 let photoInterval = null;
 let audio = null;
 
+// Store existing names to prevent duplicate wishes
+let existingNames = new Set();
+
 // ========= REAL-TIME WISHES LISTENER =========
 function loadWishes() {
   wishesRef.orderByChild('timestamp').limitToLast(100).on('value', (snapshot) => {
     const wishes = [];
+    existingNames.clear();
     snapshot.forEach((child) => {
+      const name = child.val().name;
+      existingNames.add(name.toLowerCase());
       wishes.push({
         id: child.key,
         name: child.val().name,
@@ -733,7 +767,7 @@ function loadWishes() {
   });
 }
 
-// Send wish
+// Send wish with duplicate check
 function sendWish() {
   const name = document.getElementById('wishName').value.trim();
   const message = document.getElementById('wishMessage').value.trim();
@@ -747,6 +781,12 @@ function sendWish() {
     return;
   }
   
+  // Check for duplicate name (case insensitive)
+  if (existingNames.has(name.toLowerCase())) {
+    alert(`😊 ${name}, you have already wished! Thank you for your love! 💖`);
+    return;
+  }
+  
   const wish = {
     name: name,
     message: message,
@@ -756,7 +796,7 @@ function sendWish() {
   wishesRef.push(wish).then(() => {
     document.getElementById('wishName').value = '';
     document.getElementById('wishMessage').value = '';
-    alert("🎉 Thank you! Your wish has been added! 🎉");
+    alert(`🎉 Thank you ${name}! Your wish has been added! 🎉`);
   }).catch((error) => {
     alert("Sorry, couldn't send wish. Please try again! 🙏");
   });
