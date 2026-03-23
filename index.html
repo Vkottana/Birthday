@@ -2,38 +2,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Jayani Bangaram 🎂</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Happy Birthday Jayani 🎂</title>
 
 <style>
-/* KEEP YOUR FULL ORIGINAL CSS — ONLY CHANGE BELOW PART */
-
-.floating-photo-circle{
-  position:fixed;
-  bottom:-100px;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid #ffd700;
-  box-shadow:0 0 25px rgba(255,215,0,0.6);
-  animation:floatPhotoCircle 8s linear forwards;
-  z-index:1000;
-  pointer-events:none;
+body{
+  margin:0;
+  overflow:hidden;
+  background:black;
+  font-family:Arial;
+  text-align:center;
+  color:gold;
 }
 
-/* FIXED ANIMATION */
-@keyframes floatPhotoCircle{
+/* start screen */
+#start{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+#yes{background:gold;}
+#no{background:#333;color:white;}
+
+/* final */
+#final{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+/* floating images */
+.floating-photo{
+  position:fixed;
+  bottom:-100px;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid gold;
+  animation:floatUp 10s linear forwards;
+}
+
+@keyframes floatUp{
   0%{
-    transform:translateY(0) rotate(0deg) scale(1);
+    transform:translateY(0) rotate(0deg);
     opacity:1;
   }
-  50%{
-    transform:translateY(-60vh) rotate(180deg) scale(1.1);
-  }
   100%{
-    transform:translateY(-130vh) rotate(360deg) scale(1);
+    transform:translateY(-120vh) rotate(360deg);
     opacity:0;
   }
 }
@@ -42,70 +70,81 @@
 
 <body>
 
-<!-- KEEP YOUR FULL ORIGINAL HTML SAME (NO CHANGE) -->
+<div id="start">
+  <h1>🎂 Happy Birthday Jayani Bangaram 🎂</h1>
+  <h3>Future AI Engineer 👩‍💻🤖</h3>
+  <button id="yes">START 🎉</button>
+  <button id="no">WAIT 😜</button>
+</div>
+
+<div id="final">
+  <h2>Enjoy your special day 🎁</h2>
+</div>
 
 <script>
-/* ---------- KEEP YOUR ORIGINAL VARIABLES ---------- */
-let audio = null;
-let photoInterval = null;
 
-/* ---------- YES BUTTON FIX ---------- */
-yesBtn.onclick = function() {
-  document.getElementById("start").style.display = "none";
-  document.getElementById("final").style.display = "flex";
-  document.getElementById("loveMeter").style.display = "flex";
-  document.getElementById("memories").style.display = "block";
-  
+const images = [
+  "1.JPG","2.JPG","3.JPG","4.jpeg","5.jpg","6.jpg","7.jpg","9.jpg"
+];
+
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+let audio;
+
+// 👉 START BUTTON
+yes.onclick = function(){
+  document.getElementById("start").style.display="none";
+  document.getElementById("final").style.display="flex";
+
+  startPhotos();
+  playMusic();
+};
+
+// 👉 NO BUTTON MOVE
+no.onclick = function(){
+  no.style.position="absolute";
+  no.style.left=Math.random()*80+"%";
+  no.style.top=Math.random()*80+"%";
+};
+
+// 🎵 MUSIC FIX
+function playMusic(){
   audio = new Audio("kesariya.mp3");
   audio.loop = true;
   audio.volume = 0.5;
 
-  audio.play().catch(() => {
-    document.body.addEventListener("click", () => {
+  audio.play().catch(()=>{
+    // fallback: user click required
+    document.body.addEventListener("click", ()=>{
       audio.play();
     }, { once: true });
   });
-
-  // ❌ REMOVED HEARTS (important)
-  // startPinkHearts();
-
-  startFloatingCirclePhotos();
-  increaseLoveMeter();
-  populateReasons();
-};
-
-/* ---------- UPDATED IMAGE LIST ---------- */
-const photoFiles = [
-  "1.JPG","2.JPG","3.JPG","4.jpeg","5.jpg","6.jpg","7.jpg","9.jpg"
-];
-
-/* ---------- FIXED FLOATING PHOTOS ---------- */
-function createFloatingCirclePhoto() {
-  const photo = document.createElement("img");
-  photo.className = "floating-photo-circle";
-  
-  photo.src = photoFiles[Math.floor(Math.random() * photoFiles.length)];
-  photo.style.left = Math.random() * 100 + "vw";
-  
-  const size = Math.floor(Math.random() * 30) + 60;
-  photo.style.width = size + "px";
-  photo.style.height = size + "px";
-
-  photo.style.animationDuration = (Math.random() * 3 + 6) + "s";
-
-  document.body.appendChild(photo);
-  setTimeout(() => photo.remove(), 10000);
 }
 
-function startFloatingCirclePhotos() {
-  if(photoInterval) clearInterval(photoInterval);
+// 📸 FLOATING PHOTOS
+function createPhoto(){
+  const img = document.createElement("img");
+  img.className = "floating-photo";
 
-  for(let i=0;i<20;i++){
-    setTimeout(createFloatingCirclePhoto, i*150);
+  const random = images[Math.floor(Math.random()*images.length)];
+  img.src = random;
+
+  img.style.left = Math.random()*100 + "vw";
+  img.style.animationDuration = (Math.random()*5 + 6) + "s";
+
+  document.body.appendChild(img);
+
+  setTimeout(()=>img.remove(),10000);
+}
+
+function startPhotos(){
+  for(let i=0;i<15;i++){
+    setTimeout(createPhoto, i*200);
   }
-
-  photoInterval = setInterval(createFloatingCirclePhoto, 400);
+  setInterval(createPhoto, 500);
 }
+
 </script>
 
 </body>
