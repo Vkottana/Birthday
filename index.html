@@ -117,68 +117,133 @@ body{
 .metric-bar { width: 100%; height: 6px; background: #2a1a2a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffea80); width: 100%; }
 
-/* Guestbook Section - Inside First Page */
+/* ========= GUESTBOOK SECTION - BIGGER & ZOOM ANIMATION ========= */
 .guestbook-section {
   background: rgba(255, 215, 0, 0.08);
   border: 1px solid #ffd700;
-  border-radius: 20px;
-  padding: 15px;
-  margin: 15px 0;
+  border-radius: 25px;
+  padding: 20px;
+  margin: 20px 0;
+  animation: zoomPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes zoomPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
 }
 
 .guestbook-title {
   color: #ffd700;
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
+  letter-spacing: 1px;
 }
 
+.guestbook-title span {
+  font-size: 28px;
+}
+
+/* BIGGER WISHES LIST */
 .wishes-list {
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
-  margin-bottom: 15px;
-  padding: 5px;
+  margin-bottom: 20px;
+  padding: 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 20px;
 }
 
 .wish-item {
-  background: rgba(0,0,0,0.5);
-  border-left: 3px solid #ffd700;
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border-radius: 8px;
+  background: rgba(0,0,0,0.6);
+  border-left: 4px solid #ffd700;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
   text-align: left;
 }
 
-.wish-name { color: #ffd700; font-weight: bold; font-size: 13px; }
-.wish-text { color: #ffefc0; font-size: 12px; margin-top: 3px; }
+.wish-name { 
+  color: #ffd700; 
+  font-weight: bold; 
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.wish-text { 
+  color: #ffefc0; 
+  font-size: 14px; 
+  margin-top: 5px;
+  line-height: 1.4;
+}
 
+/* BIGGER FORM FIELDS WITH ZOOM ANIMATION */
 .wish-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .wish-input {
-  background: rgba(0,0,0,0.6);
-  border: 1px solid #ffd700;
-  border-radius: 25px;
-  padding: 10px 15px;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid #ffd700;
+  border-radius: 50px;
+  padding: 16px 22px;
   color: white;
-  font-size: 13px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s;
+  animation: inputGlow 2s ease-in-out infinite;
 }
 
+@keyframes inputGlow {
+  0% { border-color: #ffd700; box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  50% { border-color: #ffea80; box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+  100% { border-color: #ffd700; box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+}
+
+.wish-input::placeholder {
+  color: #aaa;
+  font-size: 15px;
+}
+
+.wish-input:focus {
+  outline: none;
+  border-color: #ffea80;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  transform: scale(1.02);
+}
+
+/* BIGGER SEND BUTTON */
 .send-btn {
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
-  border: 1px solid #ffd700;
-  border-radius: 40px;
-  padding: 10px;
-  font-size: 14px;
+  border: 2px solid #ffd700;
+  border-radius: 50px;
+  padding: 14px 20px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+  animation: btnPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  50% { transform: scale(1.03); box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #a00000, #6b0000);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
 }
 
 .btn-row {
@@ -216,7 +281,7 @@ body{
   border: 1px solid #ffd700;
 }
 
-/* ---------- FINAL SCREEN - CLEAN BLACK WISHES WALL ---------- */
+/* ---------- FINAL SCREEN ---------- */
 #final{
   display:none;
   min-height: 100vh;
@@ -224,7 +289,6 @@ body{
   position: relative;
 }
 
-/* Main Content Container */
 .final-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -236,7 +300,6 @@ body{
   flex-wrap: wrap;
 }
 
-/* Center Content */
 .center-content {
   flex: 1;
   min-width: 300px;
@@ -274,7 +337,7 @@ body{
   border:1px solid #ffd700;
 }
 
-/* ========= CLEAN BLACK WISHES WALL ========= */
+/* Wishes Wall */
 .wishes-wall {
   flex: 1;
   min-width: 320px;
@@ -291,7 +354,6 @@ body{
   top: 30px;
 }
 
-/* Wall Header */
 .wall-header {
   padding: 18px;
   text-align: center;
@@ -316,7 +378,6 @@ body{
   margin-top: 6px;
 }
 
-/* Wishes Container */
 .wishes-container {
   flex: 1;
   overflow-y: auto;
@@ -327,7 +388,6 @@ body{
   background: #0a0a0a;
 }
 
-/* Custom Scrollbar - Gold */
 .wishes-container::-webkit-scrollbar {
   width: 4px;
 }
@@ -340,7 +400,6 @@ body{
   border-radius: 10px;
 }
 
-/* Individual Wish Card - Clean Black */
 .wish-card {
   background: #111111;
   border-radius: 16px;
@@ -367,7 +426,6 @@ body{
   transform: translateX(3px);
 }
 
-/* Avatar/Icon */
 .wish-avatar {
   display: inline-flex;
   align-items: center;
@@ -415,7 +473,6 @@ body{
   padding-left: 38px;
 }
 
-/* Empty State */
 .empty-wishes {
   text-align: center;
   color: #666;
@@ -429,7 +486,6 @@ body{
   margin-bottom: 12px;
 }
 
-/* Floating Photos */
 .floating-photo{
   position:fixed;
   bottom:-100px;
@@ -451,7 +507,7 @@ body{
   }
 }
 
-/* ========= RESPONSIVE - MOBILE FRIENDLY ========= */
+/* Responsive */
 @media (max-width: 900px) {
   .final-container {
     flex-direction: column;
@@ -483,23 +539,18 @@ body{
     height: 150px;
   }
   
-  .wall-header h3 {
+  .guestbook-title {
     font-size: 18px;
   }
   
-  .wish-name {
-    font-size: 13px;
+  .wish-input {
+    padding: 14px 20px;
+    font-size: 15px;
   }
   
-  .wish-text {
-    font-size: 12px;
-    padding-left: 35px;
-  }
-  
-  .wish-avatar {
-    width: 26px;
-    height: 26px;
-    font-size: 12px;
+  .send-btn {
+    padding: 12px 18px;
+    font-size: 16px;
   }
 }
 
@@ -517,23 +568,18 @@ body{
     max-height: 400px;
   }
   
-  .wishes-container {
-    padding: 15px;
+  .guestbook-title {
+    font-size: 16px;
   }
   
-  .wish-card {
-    padding: 12px 14px;
+  .wish-input {
+    padding: 12px 18px;
+    font-size: 14px;
   }
   
-  .wish-text {
-    font-size: 12px;
-    padding-left: 32px;
-  }
-  
-  .wish-avatar {
-    width: 24px;
-    height: 24px;
-    font-size: 11px;
+  .send-btn {
+    padding: 11px 16px;
+    font-size: 15px;
   }
 }
 </style>
@@ -564,18 +610,20 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <!-- Guestbook Section -->
+    <!-- ========= GUESTBOOK SECTION - BIGGER WITH ZOOM ANIMATION ========= -->
     <div class="guestbook-section">
-      <div class="guestbook-title">💬 WISHES FOR JAYANI 💬</div>
+      <div class="guestbook-title">
+        <span>💬</span> WISHES FOR JAYANI <span>💬</span>
+      </div>
       
       <div class="wishes-list" id="wishesList">
         <div style="text-align: center; color: #888; padding: 20px;">✨ Loading wishes... ✨</div>
       </div>
       
       <div class="wish-form">
-        <input type="text" id="wishName" class="wish-input" placeholder="✨ Your Name ✨" maxlength="30">
-        <input type="text" id="wishMessage" class="wish-input" placeholder="💝 Your Birthday Wish for Jayani 💝" maxlength="150">
-        <button class="send-btn" id="sendWishBtn">💌 SEND WISH</button>
+        <input type="text" id="wishName" class="wish-input" placeholder="✨ YOUR NAME ✨" maxlength="30">
+        <input type="text" id="wishMessage" class="wish-input" placeholder="💝 YOUR BIRTHDAY WISH FOR JAYANI 💝" maxlength="150">
+        <button class="send-btn" id="sendWishBtn">💌 SEND WISH 💌</button>
       </div>
     </div>
     
@@ -591,7 +639,6 @@ body{
 <div id="final">
   <div class="final-container">
     
-    <!-- Center Content -->
     <div class="center-content">
       <img src="Bangaram.jpg" class="main-photo" onerror="this.src='https://via.placeholder.com/180?text=Jayani⭐'">
       <div class="letter">
@@ -608,7 +655,6 @@ body{
       </div>
     </div>
     
-    <!-- Clean Black Wishes Wall -->
     <div class="wishes-wall">
       <div class="wall-header">
         <h3>✨💬 WISHES WALL 💬✨</h3>
@@ -664,9 +710,8 @@ function loadWishes() {
         time: child.val().timestamp
       });
     });
-    wishes.reverse(); // Newest on top
+    wishes.reverse();
     
-    // Update First Page Wishes
     const wishesList = document.getElementById('wishesList');
     if (wishes.length === 0) {
       wishesList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px;">✨ Be the first to wish! ✨</div>';
@@ -679,7 +724,6 @@ function loadWishes() {
       `).join('');
     }
     
-    // Update Final Screen Wishes Wall
     const finalContainer = document.getElementById('finalWishesContainer');
     if (finalContainer) {
       if (wishes.length === 0) {
@@ -695,14 +739,13 @@ function loadWishes() {
             <div class="wish-time">📅 ${new Date(w.time).toLocaleString()}</div>
           </div>
         `).join('');
-        
         finalContainer.scrollTop = 0;
       }
     }
   });
 }
 
-// Send wish to Firebase
+// Send wish
 function sendWish() {
   const name = document.getElementById('wishName').value.trim();
   const message = document.getElementById('wishMessage').value.trim();
@@ -731,14 +774,12 @@ function sendWish() {
   });
 }
 
-// Escape HTML
 function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
 }
 
-// Floating Photos
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
@@ -772,7 +813,6 @@ function playSong() {
   } catch(e) { console.log("Audio error:", e); }
 }
 
-// ========= BUTTON HANDLERS =========
 const startBtn = document.getElementById("start-btn");
 const laterBtn = document.getElementById("later-btn");
 const sendWishBtn = document.getElementById("sendWishBtn");
@@ -798,13 +838,9 @@ laterBtn.onclick = function() {
 
 sendWishBtn.onclick = sendWish;
 
-// Preload images
 photoFiles.forEach(file => { const img = new Image(); img.src = file; });
-
-// Load wishes in real-time
 loadWishes();
 
-// Preview floating photos
 setTimeout(() => {
   if(document.getElementById("start").style.display !== "none") {
     for(let i = 0; i < 5; i++) setTimeout(createFloatingPhoto, i * 400);
