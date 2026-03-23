@@ -105,7 +105,7 @@ body{
 .metric-bar { width: 100%; height: 6px; background: #1a1a1a; border-radius: 10px; margin-top: 3px; overflow: hidden; }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #ffd700, #ffea80); width: 100%; }
 
-/* ========= GUESTBOOK SECTION - ONLY FORM (NO WISHES LIST) ========= */
+/* ========= GUESTBOOK SECTION ========= */
 .guestbook-section {
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid #ffd700;
@@ -118,7 +118,7 @@ body{
   color: #ffd700;
   font-size: 22px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,8 +126,49 @@ body{
   letter-spacing: 1px;
 }
 
-.guestbook-title span {
-  font-size: 28px;
+/* RECENT WISHES - Latest 5 wishes only */
+.recent-wishes {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.recent-title {
+  color: #e0c080;
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.recent-wish-item {
+  background: rgba(0,0,0,0.5);
+  border-left: 3px solid #ffd700;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  text-align: left;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-5px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.recent-name { 
+  color: #ffd700; 
+  font-weight: bold; 
+  font-size: 13px;
+}
+.recent-text { 
+  color: #ffefc0; 
+  font-size: 12px; 
+  margin-top: 3px;
+  word-break: break-word;
 }
 
 /* BIG FORM FIELDS WITH ZOOM ANIMATION */
@@ -169,7 +210,7 @@ body{
   animation: none;
 }
 
-/* SEND BUTTON - NO ZOOM */
+/* SEND BUTTON */
 .send-btn {
   background: linear-gradient(135deg, #8b0000, #5e0000);
   color: #ffd700;
@@ -189,7 +230,7 @@ body{
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-/* BIG START BUTTON WITH ZOOM */
+/* START BUTTON WITH ZOOM */
 .btn-row {
   display: flex;
   justify-content: center;
@@ -294,7 +335,7 @@ body{
   border:1px solid #ffd700;
 }
 
-/* Wishes Wall */
+/* Wishes Wall - Full List */
 .wishes-wall {
   flex: 1;
   min-width: 320px;
@@ -505,10 +546,6 @@ body{
     font-size: 16px;
   }
   
-  .wish-input::placeholder {
-    font-size: 15px;
-  }
-  
   .send-btn {
     padding: 12px 18px;
     font-size: 17px;
@@ -541,10 +578,6 @@ body{
   .wish-input {
     padding: 14px 20px;
     font-size: 15px;
-  }
-  
-  .wish-input::placeholder {
-    font-size: 14px;
   }
   
   .send-btn {
@@ -589,10 +622,16 @@ body{
       <div class="metric"><div class="metric-label"><span>🎓 SEMESTER SURVIVAL</span><span>100%</span></div><div class="metric-bar"><div class="metric-fill"></div></div></div>
     </div>
     
-    <!-- ========= GUESTBOOK SECTION - ONLY FORM (NO WISHES LIST) ========= -->
+    <!-- ========= GUESTBOOK SECTION - WITH RECENT WISHES ========= -->
     <div class="guestbook-section">
       <div class="guestbook-title">
-        <span>💬</span> LEAVE YOUR WISH <span>💬</span>
+        <span>💬</span> RECENT WISHES <span>💬</span>
+      </div>
+      
+      <!-- Latest 5 wishes only -->
+      <div class="recent-wishes" id="recentWishesList">
+        <div class="recent-title">✨ Latest wishes ✨</div>
+        <div style="text-align: center; color: #888; padding: 15px;">No wishes yet. Be the first! 💫</div>
       </div>
       
       <div class="wish-form">
@@ -675,6 +714,7 @@ let audio = null;
 
 // Store existing names to prevent duplicate wishes
 let existingNames = new Set();
+let allWishes = [];
 
 // ========= REAL-TIME WISHES LISTENER =========
 function loadWishes() {
@@ -691,9 +731,31 @@ function loadWishes() {
         time: child.val().timestamp
       });
     });
-    wishes.reverse(); // Newest on top
+    wishes.reverse(); // Newest first
+    allWishes = wishes;
     
-    // Update Final Screen Wishes Wall
+    // Update FIRST PAGE - Show ONLY LATEST 5 wishes
+    const recentContainer = document.getElementById('recentWishesList');
+    const latestWishes = wishes.slice(0, 5); // Only take latest 5
+    
+    if (latestWishes.length === 0) {
+      recentContainer.innerHTML = `
+        <div class="recent-title">✨ Latest wishes ✨</div>
+        <div style="text-align: center; color: #888; padding: 15px;">No wishes yet. Be the first! 💫</div>
+      `;
+    } else {
+      recentContainer.innerHTML = `
+        <div class="recent-title">✨ Latest ${latestWishes.length} wishes ✨</div>
+        ${latestWishes.map(w => `
+          <div class="recent-wish-item">
+            <div class="recent-name">⭐ ${escapeHtml(w.name)}</div>
+            <div class="recent-text">💝 ${escapeHtml(w.message)}</div>
+          </div>
+        `).join('')}
+      `;
+    }
+    
+    // Update FINAL SCREEN - Show ALL wishes
     const finalContainer = document.getElementById('finalWishesContainer');
     if (finalContainer) {
       if (wishes.length === 0) {
