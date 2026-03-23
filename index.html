@@ -473,19 +473,20 @@ startBtn.onclick = function(){
   // START FLOATING PHOTOS - IMMEDIATELY
   startFloatingPhotos();
   
-  // Play song
+  // PLAY UNSTOPPABLE SONG 🎵 (UPDATED)
   try {
     if(audio) {
       audio.pause();
       audio.currentTime = 0;
     }
-    audio = new Audio("kesariya.mp3");
+    audio = new Audio("unstoppable.mpeg");
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = 0.5;
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
       playPromise.catch(error => {
+        console.log("Auto-play prevented, click to play");
         document.body.onclick = function() {
           audio.play();
           document.body.onclick = null;
