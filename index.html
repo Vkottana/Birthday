@@ -126,7 +126,7 @@ body{
   letter-spacing: 1px;
 }
 
-/* LATEST WISH - Only 1 message */
+/* LATEST WISH - With animation */
 .latest-wish {
   margin-bottom: 20px;
   padding: 15px;
@@ -150,8 +150,23 @@ body{
   text-transform: uppercase;
 }
 
+/* NEW WISH ANIMATION - HIGHLIGHT EFFECT */
 .latest-wish-item {
   text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .latest-name {
@@ -526,189 +541,50 @@ body{
   }
 }
 
-/* ========= RESPONSIVE - BIGGER FOR MOBILE (NO ZOOM NEEDED) ========= */
+/* ========= RESPONSIVE - BIGGER FOR MOBILE ========= */
 @media (max-width: 900px) {
-  .dashboard-card {
-    padding: 20px;
-  }
-  
-  .ai-title {
-    font-size: 26px;
-  }
-  
-  .stat-card {
-    padding: 12px 18px;
-    min-width: 90px;
-  }
-  
-  .stat-icon {
-    font-size: 32px;
-  }
-  
-  .stat-value {
-    font-size: 24px;
-  }
-  
-  .performance-section {
-    padding: 18px;
-  }
-  
-  .section-title {
-    font-size: 16px;
-  }
-  
-  .metric-label {
-    font-size: 14px;
-  }
-  
-  .guestbook-title {
-    font-size: 24px;
-  }
-  
-  .latest-name {
-    font-size: 20px;
-  }
-  
-  .latest-text {
-    font-size: 18px;
-  }
-  
-  .latest-time {
-    font-size: 12px;
-  }
-  
-  .wish-input {
-    padding: 20px 26px;
-    font-size: 20px;
-  }
-  
-  .wish-input::placeholder {
-    font-size: 18px;
-  }
-  
-  .send-btn {
-    padding: 16px 24px;
-    font-size: 20px;
-  }
-  
-  .dashboard-btn {
-    padding: 18px 40px;
-    font-size: 22px;
-  }
-  
-  .final-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .center-content {
-    position: relative;
-    top: 0;
-    width: 100%;
-  }
-  
-  .wishes-wall {
-    position: relative;
-    top: 0;
-    width: 100%;
-    max-width: 100%;
-    max-height: 450px;
-  }
-  
-  .letter {
-    font-size: 24px;
-    padding: 22px;
-  }
-  
-  .main-photo {
-    width: 180px;
-    height: 180px;
-  }
+  .dashboard-card { padding: 20px; }
+  .ai-title { font-size: 26px; }
+  .stat-card { padding: 12px 18px; min-width: 90px; }
+  .stat-icon { font-size: 32px; }
+  .stat-value { font-size: 24px; }
+  .performance-section { padding: 18px; }
+  .section-title { font-size: 16px; }
+  .metric-label { font-size: 14px; }
+  .guestbook-title { font-size: 24px; }
+  .latest-name { font-size: 20px; }
+  .latest-text { font-size: 18px; }
+  .wish-input { padding: 20px 26px; font-size: 20px; }
+  .wish-input::placeholder { font-size: 18px; }
+  .send-btn { padding: 16px 24px; font-size: 20px; }
+  .dashboard-btn { padding: 18px 40px; font-size: 22px; }
+  .final-container { flex-direction: column; align-items: center; gap: 30px; }
+  .center-content { position: relative; top: 0; width: 100%; }
+  .wishes-wall { position: relative; top: 0; width: 100%; max-width: 100%; max-height: 450px; }
+  .letter { font-size: 24px; padding: 22px; }
+  .main-photo { width: 180px; height: 180px; }
 }
 
 @media (max-width: 600px) {
-  .dashboard-card {
-    padding: 18px;
-  }
-  
-  .ai-title {
-    font-size: 24px;
-  }
-  
-  .stats-grid {
-    gap: 12px;
-  }
-  
-  .stat-card {
-    padding: 10px 15px;
-    min-width: 80px;
-  }
-  
-  .stat-icon {
-    font-size: 28px;
-  }
-  
-  .stat-value {
-    font-size: 20px;
-  }
-  
-  .performance-section {
-    padding: 15px;
-  }
-  
-  .section-title {
-    font-size: 14px;
-  }
-  
-  .metric-label {
-    font-size: 13px;
-  }
-  
-  .guestbook-title {
-    font-size: 22px;
-  }
-  
-  .latest-name {
-    font-size: 18px;
-  }
-  
-  .latest-text {
-    font-size: 16px;
-  }
-  
-  .wish-input {
-    padding: 18px 24px;
-    font-size: 18px;
-  }
-  
-  .wish-input::placeholder {
-    font-size: 16px;
-  }
-  
-  .send-btn {
-    padding: 14px 22px;
-    font-size: 18px;
-  }
-  
-  .dashboard-btn {
-    padding: 16px 35px;
-    font-size: 20px;
-  }
-  
-  .letter {
-    font-size: 22px;
-    padding: 18px;
-  }
-  
-  .main-photo {
-    width: 160px;
-    height: 160px;
-  }
-  
-  .wishes-wall {
-    max-height: 400px;
-  }
+  .dashboard-card { padding: 18px; }
+  .ai-title { font-size: 24px; }
+  .stat-card { padding: 10px 15px; min-width: 80px; }
+  .stat-icon { font-size: 28px; }
+  .stat-value { font-size: 20px; }
+  .performance-section { padding: 15px; }
+  .section-title { font-size: 14px; }
+  .metric-label { font-size: 13px; }
+  .guestbook-title { font-size: 22px; }
+  .latest-name { font-size: 18px; }
+  .latest-text { font-size: 16px; }
+  .wish-input { padding: 18px 24px; font-size: 18px; }
+  .wish-input::placeholder { font-size: 16px; }
+  .send-btn { padding: 14px 22px; font-size: 18px; }
+  .dashboard-btn { padding: 16px 35px; font-size: 20px; }
+  .letter { font-size: 22px; padding: 18px; }
+  .main-photo { width: 160px; height: 160px; }
+  .wishes-wall { max-height: 400px; }
+  .floating-photo { width: 60px; height: 60px; }
 }
 </style>
 </head>
@@ -743,7 +619,6 @@ body{
         <span>💬</span> LATEST WISH <span>💬</span>
       </div>
       
-      <!-- Latest wish - Only 1 message -->
       <div class="latest-wish" id="latestWishContainer">
         <div class="empty-latest">
           <span>✨🎈✨</span>
@@ -851,7 +726,7 @@ function loadWishes() {
     wishes.reverse(); // Newest first
     allWishes = wishes;
     
-    // Update FIRST PAGE - Show ONLY THE LATEST WISH (1 message)
+    // Update FIRST PAGE - Show ONLY THE LATEST WISH (1 message) with animation
     const latestContainer = document.getElementById('latestWishContainer');
     const latestWish = wishes.length > 0 ? wishes[0] : null;
     
@@ -955,8 +830,10 @@ function createFloatingPhoto() {
 
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
+  // Launch initial 15 photos
   for(let i = 0; i < 15; i++) setTimeout(createFloatingPhoto, i * 150);
-  photoInterval = setInterval(createFloatingPhoto, 550);
+  // OPTIMIZED: Reduced frequency from 550ms to 800ms for better performance
+  photoInterval = setInterval(createFloatingPhoto, 800);
 }
 
 function playSong() {
