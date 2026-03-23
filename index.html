@@ -322,20 +322,21 @@ body{
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
-/* ---------- FLOATING PHOTOS - ALL 13 MOVE FROM BOTTOM TO TOP ---------- */
+/* ---------- FLOATING PHOTOS - LARGER CIRCLE SIZE ---------- */
 .floating-photo{
   position:fixed;
   bottom:-100px;
-  width:65px;
-  height:65px;
+  width:85px;
+  height:85px;
   border-radius:50% !important;
   object-fit:cover;
-  border:2px solid #ffd700;
-  box-shadow:0 0 20px rgba(255, 215, 0, 0.6);
-  animation:floatUp 8s linear forwards;
+  border:3px solid #ffd700;
+  box-shadow:0 0 25px rgba(255, 215, 0, 0.7);
+  animation:floatUp 9s linear forwards;
   z-index:1000;
   pointer-events:none;
   will-change: transform;
+  background: rgba(0,0,0,0.3);
 }
 
 @keyframes floatUp{
@@ -360,7 +361,7 @@ body{
   .dashboard-btn{padding:10px 25px;font-size:15px;}
   .letter{font-size:20px;padding:18px 25px;}
   .main-photo{width:130px;height:130px;}
-  .floating-photo{width:50px;height:50px;}
+  .floating-photo{width:70px;height:70px;}
 }
 </style>
 </head>
@@ -465,6 +466,31 @@ const laterBtn = document.getElementById("later-btn");
 let photoInterval = null;
 let audio = null;
 
+// Function to play song immediately
+function playSong() {
+  try {
+    if(audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    audio = new Audio("unstoppable.mpeg");
+    audio.loop = true;
+    audio.volume = 0.6;
+    
+    // Play immediately
+    audio.play().catch(error => {
+      console.log("Auto-play prevented, will play on click");
+      // If auto-play fails, try again on any click
+      document.body.onclick = function() {
+        audio.play();
+        document.body.onclick = null;
+      };
+    });
+  } catch(e) {
+    console.log("Audio error:", e);
+  }
+}
+
 // START BUTTON - BEGIN CELEBRATION
 startBtn.onclick = function(){
   document.getElementById("start").style.display = "none";
@@ -473,29 +499,8 @@ startBtn.onclick = function(){
   // START FLOATING PHOTOS - IMMEDIATELY
   startFloatingPhotos();
   
-  // PLAY UNSTOPPABLE SONG 🎵 (UPDATED)
-  try {
-    if(audio) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-    audio = new Audio("unstoppable.mpeg");
-    audio.loop = true;
-    audio.volume = 0.5;
-    
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        console.log("Auto-play prevented, click to play");
-        document.body.onclick = function() {
-          audio.play();
-          document.body.onclick = null;
-        };
-      });
-    }
-  } catch(e) {
-    console.log("Audio error:", e);
-  }
+  // PLAY SONG IMMEDIATELY
+  playSong();
 };
 
 // LATER BUTTON - RUNAWAY
@@ -511,7 +516,9 @@ laterBtn.onclick = function(){
   setTimeout(() => laterBtn.style.transform = "rotate(0deg)", 200);
 };
 
-// CREATE FLOATING PHOTO - ONE PHOTO AT A TIME
+// CREATE FLOATING PHOTO - LARGER SIZE
+let photoCounter = 0;
+
 function createFloatingPhoto() {
   const photo = document.createElement("img");
   photo.className = "floating-photo";
@@ -520,57 +527,72 @@ function createFloatingPhoto() {
   const randomPhoto = photoFiles[Math.floor(Math.random() * photoFiles.length)];
   photo.src = randomPhoto;
   
-  // Error handling - if image fails to load
+  // Add timestamp to prevent caching issues
+  photo.src = randomPhoto + "?t=" + Date.now();
+  
+  // Error handling
   photo.onerror = function() {
     console.log("Failed to load:", randomPhoto);
     if(photo.parentNode) photo.remove();
   };
   
-  // Random position (10% to 90% - stays inside screen)
+  // Random position (10% to 90%)
   const leftPos = 10 + Math.random() * 80;
   photo.style.left = leftPos + "vw";
   photo.style.bottom = "-100px";
   
-  // Random size (50px to 85px)
-  const size = Math.floor(Math.random() * 35) + 50;
+  // LARGER SIZE: 80px to 110px
+  const size = Math.floor(Math.random() * 30) + 80;
   photo.style.width = size + "px";
   photo.style.height = size + "px";
   
-  // Random speed (7 to 11 seconds)
-  const speed = Math.random() * 4 + 7;
+  // Random speed (8 to 13 seconds)
+  const speed = Math.random() * 5 + 8;
   photo.style.animationDuration = speed + "s";
   
   // Add to body
   document.body.appendChild(photo);
+  photoCounter++;
   
-  // Remove after animation completes
+  // Remove after animation
   setTimeout(() => {
     if(photo && photo.parentNode) photo.remove();
   }, speed * 1000 + 500);
 }
 
-// START FLOATING PHOTOS - ALL PHOTOS WILL MOVE
+// START FLOATING PHOTOS - ALL 13 WILL APPEAR
 function startFloatingPhotos() {
   if(photoInterval) clearInterval(photoInterval);
   
-  // Launch initial 12 photos immediately (one after another)
-  for(let i = 0; i < 12; i++) {
-    setTimeout(createFloatingPhoto, i * 180);
+  // Launch 20 photos immediately to ensure all appear
+  for(let i = 0; i < 20; i++) {
+    setTimeout(createFloatingPhoto, i * 150);
   }
   
-  // Continue launching new photos every 600ms (continuous flow)
-  photoInterval = setInterval(createFloatingPhoto, 600);
+  // Continue launching new photos every 500ms for continuous flow
+  photoInterval = setInterval(createFloatingPhoto, 500);
+  
+  // Show all 13 photos within first few seconds
+  console.log("Started floating photos - all 13 images will appear");
 }
 
-// Optional: Show a few floating photos before click for preview
+// Preload images to ensure they appear
+function preloadImages() {
+  photoFiles.forEach(file => {
+    const img = new Image();
+    img.src = file;
+  });
+}
+preloadImages();
+
+// Show preview floating photos before click
 setTimeout(() => {
-  // Only show if user hasn't clicked yet
   if(document.getElementById("start").style.display !== "none") {
-    for(let i = 0; i < 5; i++) {
-      setTimeout(createFloatingPhoto, i * 300);
+    for(let i = 0; i < 6; i++) {
+      setTimeout(createFloatingPhoto, i * 400);
     }
   }
-}, 1500);
+}, 1000);
 </script>
 
 </body>
